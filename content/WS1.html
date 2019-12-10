@@ -1,0 +1,287 @@
+---
+title: "Worksheet 1: Using R Markdown"
+author: "SDS348 Fall 2019"
+date: "2019-12-05"
+output: html_document
+---
+
+
+
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>Much of the work in this class will be done via R Markdown documents. R Markdown documents combine text (with easy formatting opens including typesetting equations), R code, and R output including figures. They are a great way to produce self-contained, reprodudicble, well-documented statistical analyses
+In this first .Rmd worksheet, you will learn how to do some basic markdown editing. After you have made changes to the document, press “Knit HTML” in R Studio and see what results you get (it will complain if you do something wrong; troubleshooting is part of life)!</p>
+<p>Edit only below this line.</p>
+<hr />
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document (go ahead and try it if you want: you can always reknit it later after making changes). You can embed an R code chunk like this:</p>
+<pre class="r"><code># R code goes here
+x &lt;- 5
+y &lt;- 7
+z &lt;- x * y
+z</code></pre>
+<pre><code>## [1] 35</code></pre>
+</div>
+<div id="basic-markdown-editing" class="section level2">
+<h2>1. Basic Markdown editing</h2>
+<p>Try out basic R Markdown features, as described <a href="http://rmarkdown.rstudio.com/authoring_basics.html">here.</a> Write some text that is bold, and some that is in italics. Make a numbered list and a bulleted list. Make a nested list. Try the block-quote feature.</p>
+</div>
+<div id="for" class="section level1">
+<h1>For</h1>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<div id="these" class="section level3">
+<h3>These</h3>
+<div id="are" class="section level4">
+<h4>Are</h4>
+<div id="different" class="section level5">
+<h5>Different</h5>
+<div id="headers" class="section level6">
+<h6>Headers</h6>
+<ol style="list-style-type: decimal">
+<li>Here</li>
+<li>Are</li>
+<li>Four</li>
+<li>Things</li>
+</ol>
+<ul>
+<li>bullet 1
+<ul>
+<li>sub-bullet 1</li>
+</ul></li>
+<li>bullet 2
+<ul>
+<li>sub-bullet 2</li>
+</ul></li>
+<li>bullet 3
+<ul>
+<li>sub-bullet 3</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="embedding-r-code-and-referencing-it-from-the-text" class="section level2">
+<h2>2. Embedding R code and referencing it from the text</h2>
+<p>R code embedded in R chunks will be executed and the output will be shown. Note that you can run code in codeblocks <em>just like you would in a regular R script</em>. It will <em>all</em> be run when you knit your document, but let’s just run this code piece by piece. You can also hit the play button on a codeblock to execute the entire thing.</p>
+<pre class="r"><code>#descriptive statistics for both variables
+summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<pre class="r"><code>#view first bit of this dataset
+head(cars)</code></pre>
+<pre><code>##   speed dist
+## 1     4    2
+## 2     4   10
+## 3     7    4
+## 4     7   22
+## 5     8   16
+## 6     9   10</code></pre>
+<pre class="r"><code>#grab just third row
+cars[3,]</code></pre>
+<pre><code>##   speed dist
+## 3     7    4</code></pre>
+<pre class="r"><code>#grab just second column
+cars[,2]</code></pre>
+<pre><code>##  [1]   2  10   4  22  16  10  18  26  34  17  28  14  20  24  28  26  34
+## [18]  34  46  26  36  60  80  20  26  54  32  40  32  40  50  42  56  76
+## [35]  84  36  46  68  32  48  52  56  64  66  54  70  92  93 120  85</code></pre>
+<pre class="r"><code>#same as grabbing the column by name
+cars$dist</code></pre>
+<pre><code>##  [1]   2  10   4  22  16  10  18  26  34  17  28  14  20  24  28  26  34
+## [18]  34  46  26  36  60  80  20  26  54  32  40  32  40  50  42  56  76
+## [35]  84  36  46  68  32  48  52  56  64  66  54  70  92  93 120  85</code></pre>
+<pre class="r"><code>#grab element in third row, second column
+cars[3,2]</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>##return only rows where speed is over 10 mph
+cars[cars$speed&gt;10,]</code></pre>
+<pre><code>##    speed dist
+## 10    11   17
+## 11    11   28
+## 12    12   14
+## 13    12   20
+## 14    12   24
+## 15    12   28
+## 16    13   26
+## 17    13   34
+## 18    13   34
+## 19    13   46
+## 20    14   26
+## 21    14   36
+## 22    14   60
+## 23    14   80
+## 24    15   20
+## 25    15   26
+## 26    15   54
+## 27    16   32
+## 28    16   40
+## 29    17   32
+## 30    17   40
+## 31    17   50
+## 32    18   42
+## 33    18   56
+## 34    18   76
+## 35    18   84
+## 36    19   36
+## 37    19   46
+## 38    19   68
+## 39    20   32
+## 40    20   48
+## 41    20   52
+## 42    20   56
+## 43    20   64
+## 44    22   66
+## 45    23   54
+## 46    24   70
+## 47    24   92
+## 48    24   93
+## 49    24  120
+## 50    25   85</code></pre>
+<pre class="r"><code>#return even numbered rows
+cars[seq(0,50,by=2),]</code></pre>
+<pre><code>##    speed dist
+## 2      4   10
+## 4      7   22
+## 6      9   10
+## 8     10   26
+## 10    11   17
+## 12    12   14
+## 14    12   24
+## 16    13   26
+## 18    13   34
+## 20    14   26
+## 22    14   60
+## 24    15   20
+## 26    15   54
+## 28    16   40
+## 30    17   40
+## 32    18   42
+## 34    18   76
+## 36    19   36
+## 38    19   68
+## 40    20   48
+## 42    20   56
+## 44    22   66
+## 46    24   70
+## 48    24   93
+## 50    25   85</code></pre>
+<pre class="r"><code>#return rows where the variable speed is an even number
+cars[cars$speed %in% c(2,4,6,8,10,12,14,16,18,20,22,24),]</code></pre>
+<pre><code>##    speed dist
+## 1      4    2
+## 2      4   10
+## 5      8   16
+## 7     10   18
+## 8     10   26
+## 9     10   34
+## 12    12   14
+## 13    12   20
+## 14    12   24
+## 15    12   28
+## 20    14   26
+## 21    14   36
+## 22    14   60
+## 23    14   80
+## 27    16   32
+## 28    16   40
+## 32    18   42
+## 33    18   56
+## 34    18   76
+## 35    18   84
+## 39    20   32
+## 40    20   48
+## 41    20   52
+## 42    20   56
+## 43    20   64
+## 44    22   66
+## 46    24   70
+## 47    24   92
+## 48    24   93
+## 49    24  120</code></pre>
+<pre class="r"><code>#more elegantly with modulo operator
+#(x %% y == 0 returns TRUE if x/y has a remainder of 0, FALSE otherwise)
+cars[cars$speed %% 2 ==0,]</code></pre>
+<pre><code>##    speed dist
+## 1      4    2
+## 2      4   10
+## 5      8   16
+## 7     10   18
+## 8     10   26
+## 9     10   34
+## 12    12   14
+## 13    12   20
+## 14    12   24
+## 15    12   28
+## 20    14   26
+## 21    14   36
+## 22    14   60
+## 23    14   80
+## 27    16   32
+## 28    16   40
+## 32    18   42
+## 33    18   56
+## 34    18   76
+## 35    18   84
+## 39    20   32
+## 40    20   48
+## 41    20   52
+## 42    20   56
+## 43    20   64
+## 44    22   66
+## 46    24   70
+## 47    24   92
+## 48    24   93
+## 49    24  120</code></pre>
+<pre class="r"><code>#mean of each variable
+mean(cars$speed)</code></pre>
+<pre><code>## [1] 15.4</code></pre>
+<pre class="r"><code>mean(cars$dist)</code></pre>
+<pre><code>## [1] 42.98</code></pre>
+<pre class="r"><code>#see if you can figure out how apply works
+apply(cars,2,mean)</code></pre>
+<pre><code>## speed  dist 
+## 15.40 42.98</code></pre>
+<p>You can include R code inline: use a single back-tick, followed by an r (case doesn’t matter), followed by a space, followed by the R code you want to run. For example, you can run the code <code>2+2</code> (note that since back-ticks without the r use a generic <code>code-type</code> fixed-width font) and get the result inline like this: 4.</p>
+<p>If you want to refer to variable or object created in another codeblock, that’s fine: for example, <code>x, y, and z</code>’s values from above are 5, 7, 35. You can separate lines with semicolons if need be to include the all together: 35.</p>
+</div>
+<div id="plots-and-other-output" class="section level2">
+<h2>3. Plots and other output</h2>
+<p>You can easily embed plots too! For example</p>
+<pre class="r"><code>plot(cars$speed, cars$dist, pch=16)</code></pre>
+<p><img src="/WS1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Let’s say you want to compute the correlation coefficient for the above data, test whether it is significantly different from zero, and print all the results out into this document. Just include the following code.</p>
+<pre class="r"><code>cor.test(cars$speed, cars$dist)</code></pre>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  cars$speed and cars$dist
+## t = 9.464, df = 48, p-value = 1.49e-12
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.6816422 0.8862036
+## sample estimates:
+##       cor 
+## 0.8068949</code></pre>
+</div>
+<div id="typesetting-equations" class="section level2">
+<h2>3. Typesetting equations</h2>
+<p>You can inclue <span class="math inline">\(\LaTeX\)</span> code both inline (between single dollar-signs) and in blocks (between double dollar-signs). For example, below is the equation for the probability density function of a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math display">\[ 
+p(x | \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</span></p>
+<p>Here’s one way to calculate the correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[
+r=\frac{1}{N-1} \left( \sum_{i=1}^{N} \frac{x_i-\bar x}{s_x} \cdot \frac{y_i-\bar y}{s_y} \right)
+\]</span></p>
+<p>Let’s use this formula to calculate the correlation between speed and stopping distance ourselves, just to check.</p>
+<pre class="r"><code>1/(nrow(cars)-1)*sum(scale(cars$speed)*scale(cars$dist))</code></pre>
+<pre><code>## [1] 0.8068949</code></pre>
+</div>
+</div>

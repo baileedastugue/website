@@ -1,0 +1,470 @@
+---
+title: "WS19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{R}
+## GIVE IT PREDICTED PROBS AND TRUTH LABELS, RETURNS VARIOUS DIAGNOSTICS
+
+class_diag<-function(probs,truth){
+  
+  tab<-table(factor(probs>.5,levels=c("FALSE","TRUE")),truth)
+  acc=sum(diag(tab))/sum(tab)
+  sens=tab[2,2]/colSums(tab)[2]
+  spec=tab[1,1]/colSums(tab)[1]
+  ppv=tab[2,2]/rowSums(tab)[2]
+
+  if(is.numeric(truth)==FALSE & is.logical(truth)==FALSE) truth<-as.numeric(truth)-1
+  
+  #CALCULATE EXACT AUC
+  ord<-order(probs, decreasing=TRUE)
+  probs <- probs[ord]; truth <- truth[ord]
+  
+  TPR=cumsum(truth)/max(1,sum(truth)) 
+  FPR=cumsum(!truth)/max(1,sum(!truth))
+  
+  dup<-c(probs[-1]>=probs[-length(probs)], FALSE)
+  TPR<-c(0,TPR[!dup],1); FPR<-c(0,FPR[!dup],1)
+  
+  n <- length(TPR)
+  auc<- sum( ((TPR[-1]+TPR[-n])/2) * (FPR[-1]-FPR[-n]) )
+
+  data.frame(acc,sens,spec,ppv,auc)
+}
+```
+
+
+---
+### Example from lab
+
+- Trying to predict calcium oxalate crystals in urine (1/0) based on 6 predictor variables
+
+  - specific gravity, osmolarity, conductivity, ph, urea conc., calcium conc.
+  
+- We omit NAs and center our predictors (since lots of numeric interactions)
+
+--
+
+```{R}
+library(tidyverse); library(MASS); library(lmtest); library(boot)
+
+urine<-na.omit(urine)
+urine<-urine%>%mutate_at(-1,function(x)x-mean(x))
+```
+
+```{R}
+fit<-glm(r~(.)^2,data=urine,family="binomial")
+summary(fit)
+```
+
+---
+## Example from lab
+
+```{R}
+prob<-predict(fit,type="response") #get predicted probabilites for full data
+pred<-ifelse(prob>.5,1,0) #get predictions (if you want)
+
+rbind(prob,pred,truth=urine$r)[,1:10]%>%round(3)
+```
+
+```{R}
+#confusion matrix
+table(predictions=pred,truth=urine$r)
+
+class_diag(prob,urine$r) #see how we are performing
+```
+
+
+
+```{R}
+set.seed(1234)
+k=10
+
+data1<-urine[sample(nrow(urine)),]
+folds<-cut(seq(1:nrow(urine)),breaks=k,labels=F)
+
+diags<-NULL
+for(i in 1:k){
+  train<-data1[folds!=i,]
+  test<-data1[folds==i,]
+  truth<-test$r
+  
+  fit<-glm(r~(.)^2,data=train,family="binomial")
+  probs<-predict(fit,newdata = test,type="response")
+  
+  diags<-rbind(diags,class_diag(probs,truth))
+}
+
+apply(diags,2,mean)
+```
+
+Does a much worse job at predicting new data!
+
+---
+### Example from lab
+
+
+```{R}
+fit<-glm(r~.,data=urine,family="binomial")
+summary(fit)
+```
+
+
+---
+### Example from lab
+
+```{R}
+prob<-predict(fit,type="response")
+class_diag(prob,urine$r)
+```
+
+
+---
+### Example from lab
+
+- But under cross-validation...
+
+```{R}
+set.seed(1234)
+k=10
+
+data1<-urine[sample(nrow(urine)),]
+folds<-cut(seq(1:nrow(urine)),breaks=k,labels=F)
+
+diags<-NULL
+for(i in 1:k){
+  train<-data1[folds!=i,]
+  test<-data1[folds==i,]
+  truth<-test$r
+  
+  fit<-glm(r~.,data=train,family="binomial")
+  probs<-predict(fit,newdata = test,type="response")
+  
+  diags<-rbind(diags,class_diag(probs,truth))
+}
+
+apply(diags,2,mean)
+```
+
+
+```{R}
+fit<-lm(mpg~.,data=mtcars)
+yhat<-predict(fit) #predicted mpg
+
+
+``` 
+
+
+```{R}
+mean((data$mpg-yhat)^2) #mean squared error (MSE)
+
+
+``` 
+
+
+
+```{R}
+set.seed(1234)
+k=5 #choose number of folds
+
+data1<-mtcars[sample(nrow(mtcars)),] #randomly order rows
+folds<-cut(seq(1:nrow(mtcars)),breaks=k,labels=F) #create folds
+
+diags<-NULL
+for(i in 1:k){
+  train<-data1[folds!=i,]
+  test<-data1[folds==i,]
+  
+  fit<-lm(mpg~.,data=train)
+  yhat<-predict(fit,newdata=test)
+  
+  diags<-mean((test$mpg-yhat)^2) 
+}
+
+mean(diags)
+
+
+``` 
+
+
+```{R}
+fit<-lm(mpg~., data=mtcars)
+
+
+``` 
+
+
+```{R}
+library(glmnet)
+data(mtcars)
+y<-as.matrix(mtcars$mpg)
+x<-mtcars%>%dplyr::select(-mpg)%>%mutate_all(scale)%>%as.matrix
+
+cv<-cv.glmnet(x,y) #this picks an optimal value for lambda (smallest MSE) via 10-fold CV
+
+
+``` 
+
+
+```{R}
+{plot(cv$glmnet.fit, "lambda", label=TRUE)
+abline(v = log(cv$lambda.1se))
+abline(v = log(cv$lambda.min),lty=2)}
+
+
+``` 
+
+
+```{R}
+lasso1<-glmnet(x,y,lambda=cv$lambda.1se)
+coef(lasso1)
+
+
+``` 
+
+
+```{R}
+set.seed(1234)
+k=5 #choose number of folds
+
+data1<-mtcars[sample(nrow(mtcars)),] #randomly order rows
+folds<-cut(seq(1:nrow(mtcars)),breaks=k,labels=F) #create folds
+
+diags<-NULL
+for(i in 1:k){
+  train<-data1[folds!=i,]
+  test<-data1[folds==i,]
+  
+  fit<-lm(mpg~cyl+hp+wt,data=train)
+  yhat<-predict(fit,newdata=test)
+  
+  diags<-mean((test$mpg-yhat)^2) 
+}
+
+mean(diags)
+
+
+``` 
+
+
+```{R}
+gradsch<- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+gradsch$rank <- factor(gradsch$rank) #make rank (tier 1, tier 2, etc.) a factor
+
+
+```
+
+
+```{R}
+fit <- glm(admit ~ -1 + gre + gpa + rank, data = gradsch, family = "binomial")
+model.matrix(fit)
+
+
+``` 
+
+
+```{R}
+x<-model.matrix(fit)
+x<-scale(x)
+y<-as.matrix(gradsch$admit)
+
+cv2<-cv.glmnet(x,y)
+lasso2<-glmnet(x,y,lambda=cv2$lambda.1se)
+coef(cv2)
+
+
+```
+
+
+```{R}
+set.seed(1234)
+k=10 #choose number of folds
+
+data1<-gradsch[sample(nrow(gradsch)),] #randomly order rows
+folds<-cut(seq(1:nrow(gradsch)),breaks=k,labels=F) #create folds
+
+diags<-NULL
+for(i in 1:k){
+  ## Create training and test sets
+  train<-data1[folds!=i,] 
+  test<-data1[folds==i,]
+  truth<-test$admit
+  
+  ## Train model on training set
+  fit<-glm(admit~.,data=train,family="binomial")
+  probs<-predict(fit,newdata = test,type="response")
+  
+  ## Test model on test set (save all k results)
+  diags<-rbind(diags,class_diag(probs,truth))
+}
+
+diags%>%summarize_all(mean)
+
+
+``` 
+
+
+```{R}
+set.seed(1234)
+k=10 #choose number of folds
+
+gradsch$rank1<-ifelse(gradsch$rank=="1",1,0)
+data1<-gradsch[sample(nrow(gradsch)),] #randomly order rows
+folds<-cut(seq(1:nrow(gradsch)),breaks=k,labels=F) #create folds
+
+diags<-NULL
+for(i in 1:k){
+  ## Create training and test sets
+  train<-data1[folds!=i,] 
+  test<-data1[folds==i,]
+  truth<-test$admit
+  
+  ## Train model on training set
+  fit<-glm(admit~gre+gpa+rank1,data=train,family="binomial")
+  probs<-predict(fit,newdata = test,type="response")
+  
+  ## Test model on test set (save all k results)
+  diags<-rbind(diags,class_diag(probs,truth))
+}
+
+diags%>%summarize_all(mean)
+
+
+``` 
+
+
+```{R}
+prussian<-read.table("http://www.randomservices.org/random/data/HorseKicks.txt",header = T)
+
+prussian<-gather(prussian,Corps,Kicks,-Year)
+prussian$Corps<-as.factor(prussian$Corps)
+prussian%>%head()
+
+prussian%>%ggplot()+geom_histogram(aes(y=..density..,Kicks),bins=5)
+
+
+``` 
+
+
+```{R}
+mean(prussian$Kicks)
+dpois(0:4,lambda=.7)
+
+
+``` 
+
+
+```{R}
+prussian%>%ggplot()+geom_histogram(aes(y=..density..,Kicks),bins=5)+
+  annotate(geom="point",x=0:4,y=dpois(0:4,lambda=.7),size=3,color="red")
+
+
+``` 
+
+
+```{R}
+fit<-glm(Kicks~I(Year-1875),data=prussian,family="poisson") 
+coeftest(fit)
+
+
+
+
+``` 
+
+
+```{R}
+fit<-glm(Kicks~I(Year-1875),data=prussian,family="quasipoisson") 
+coeftest(fit)
+
+
+```
+
+```{R}
+drinkdat<-read.csv("http://www.nathanielwoodward.com/drink_data_total.csv")
+drinkdat<-drinkdat%>%filter(Drinks<20)
+drinkdat%>%ggplot(aes(Drinks))+geom_bar()
+
+
+``` 
+
+```{R}
+fit<-lm(Drinks~Social*Stress,data=drinkdat)
+summary(fit)
+
+
+``` 
+
+
+```{R}
+library(pscl)
+zip_fit<-zeroinfl(Drinks~Social*Stress,data=drinkdat)
+summary(zip_fit)
+
+
+``` 
+
+
+```{R}
+library(MASS)
+mtcars$cyl<-factor(mtcars$cyl)
+ord_fit<-polr(cyl~hp,data=mtcars)
+coeftest(ord_fit)
+
+
+``` 
+
+
+```{R}
+library(nnet) #install.packages("nnet")
+
+multi_fit<-multinom(cyl~hp,data=mtcars)
+summary(multi_fit)
+exp(coef(multi_fit))
+
+#pvalues if you want: only 2 to 8 is significant!
+z<-summary(multi_fit)$coefficients/summary(multi_fit)$standard.errors
+(1-pnorm(abs(z)))*2
+
+
+``` 
+
+
+```{R}
+predict(multi_fit,type="probs")%>%round(3)%>%head()
+
+#confusion matrix
+table(predictions=predict(multi_fit,type="class"),truth=mtcars$cyl)
+
+
+``` 
+
+
+```{R}
+data(msleep)
+dat<-msleep%>%dplyr::select(bodywt,sleep_total, vore)%>%na.omit
+
+multi_fit<-multinom(vore~bodywt+sleep_total,data=dat)
+exp(coef(multi_fit))
+
+#pvalues if you want: insectivore near significant from carnivore
+z<-summary(multi_fit)$coefficients/summary(multi_fit)$standard.errors
+(1-pnorm(abs(z)))*2
+
+
+
+``` 
+
+
+```{R}
+predict(multi_fit,type="probs")%>%round(3)%>%head()
+
+#confusion matrix
+table(predictions=predict(multi_fit,type="class"),truth=dat$vore)
+```
