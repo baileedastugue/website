@@ -2,7 +2,7 @@
 date:
 description: this is meta description
 draft: false
-image: images/Coffee.jpeg
+image: images/profile.jpg
 title: About Me
 type: about
 ---
