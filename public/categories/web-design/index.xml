@@ -12,12 +12,13 @@
     
     
     <item>
-      <title>Project 1</title>
+      <title>This will eventually be project 3</title>
       <link>/blog/post-3/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/blog/post-3/</guid>
-      <description>About the Data Sets Both data sets were found on the Center for Disease Control website for the 2015 year.</description>
+      <description>About the Data Sets Link I&#39;m an inline-style link
+I&#39;m an inline-style link with title</description>
     </item>
     
   </channel>

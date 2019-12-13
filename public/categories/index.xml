@@ -12,9 +12,18 @@
     
     
     <item>
+      <title>Web Design</title>
+      <link>/categories/web-design/</link>
+      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>/categories/web-design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Projects</title>
       <link>/categories/projects/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      <pubDate>Thu, 17 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/categories/projects/</guid>
       <description></description>
@@ -23,18 +32,9 @@
     <item>
       <title>RStudio</title>
       <link>/categories/rstudio/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      <pubDate>Thu, 17 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/categories/rstudio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Design</title>
-      <link>/categories/web-design/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>/categories/web-design/</guid>
       <description></description>
     </item>
     

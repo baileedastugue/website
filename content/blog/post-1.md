@@ -1,14 +1,14 @@
 ---
 categories:
-- Projects
 - RStudio
-date: "2019-10-29T10:07:47+06:00"
 description: this is meta description
 draft: false
-image: 
+image: images/caveman.png
 tags:
-
-title: Project I: Cause of Death + Diabetes
+- RSudio
+- New
+title: This is Project 1
+type: featured
 ---
 
 
