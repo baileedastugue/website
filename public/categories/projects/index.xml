@@ -17,7 +17,7 @@
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/blog/post-1/</guid>
-      <description>Link to Project I</description>
+      <description>In my computational biology class, our first project using RStudio focused on data wrangling and data exploration.</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 17 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/project1/</guid>
-      <description>knitr::opts_chunk$set(echo = TRUE) library(knitr) opts_chunk$set(fig.align=&amp;quot;center&amp;quot;, fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE) About the Data Sets Both data sets were found on the Center for Disease Control website for the 2015 year.</description>
+      <description>About the Data Sets Both data sets were found on the Center for Disease Control website for the 2015 year.</description>
     </item>
     
   </channel>
