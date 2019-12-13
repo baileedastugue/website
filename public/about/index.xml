@@ -6,20 +6,9 @@
     <description>Recent content in Abouts on Bailee Dastugue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Oct 2019 13:49:23 +0600</lastBuildDate>
     
 	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>About Me</title>
-      <link>/about/about/</link>
-      <pubDate>Tue, 29 Oct 2019 13:49:23 +0600</pubDate>
-      
-      <guid>/about/about/</guid>
-      <description>My name is Bailee Dastugue (formerly Wallis).
-Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
-    </item>
     
     <item>
       <title></title>
@@ -28,6 +17,15 @@ Any ‘about me’ is typically hyper-focused on an all-too revealing medical hi
       
       <guid>/about/about/</guid>
       <description>About Me /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/about/</guid>
+      <description>My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
     </item>
     
   </channel>

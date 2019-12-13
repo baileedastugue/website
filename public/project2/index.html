@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <title>Bailee Dastugue</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is meta description">
+  <meta name="author" content="Bailee Dastugue">
+  <meta name="generator" content="Hugo 0.60.1" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/favicon.png " type="image/x-icon">
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom">
+      <a class="navbar-brand mobile-view" href="/"><img class="img-fluid"
+          src="/images/coffee.png" alt="Bailee Dastugue"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-facebook"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-twitter-alt"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-instagram"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-github"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href=""><i class=""></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="/"><img class="img-fluid"
+            src="/images/coffee.png" alt="Bailee Dastugue"></a>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"> Home </a>
+          </li>
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/about">About</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Post</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search px-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="//search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+        <h2>Project2</h2>
+        <div class="mb-3">
+          <span>By Bailee Dastugue</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>01 January 0001</span>
+          
+        </div>
+        
+        <div class="content mb-5">
+          
+
+
+<p><strong>Introduction</strong></p>
+<p>This dataset was found using kaggle and involves a variety of numeric (age, weight, systolic BP, diastolic BP), scaled (glucose level, cholesterol level, and gender), and binary variables (active, smoker, alcohol use, cardiac disease). The age, which was given in days, was divided by 365 in order to give age in years. Glucose and cholesterol levels were given as a scale from 1-3; 1 was set as a “normal” level, 2 was set as an “above normal” level, and 3 was set as a “well above normal” level. Gender was transformed so that 1 was equivalent to “female” and 2, equiavalent to “male”. In order to use a more meaningful representation of blood pressure, the diastolic and systolic blood pressures were transformed to find the mean arterial pressure (MAP). Weight and height were used to create the BMI variable. Extreme outliers were removed (MAPs above 150 and below 60 were removed and BMIs above 50 were removed). Only the first 1000 observations were used because R was honestly very unhappy with a ~70k observation dataset. The subset code could be applied to the full data set, but the subset data fully illustrates the modeling concepts.</p>
+<pre class="r"><code>library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(ggplot2)
+cardio1 &lt;- cardio %&gt;% mutate_at(vars(age), funs(age/365)) %&gt;% round(2) %&gt;% rename(systolic_bp = ap_hi) %&gt;% rename(diastolic_bp = ap_lo) 
+cardio2&lt;-cardio1 %&gt;% mutate(cholesterol = ifelse(cholesterol == 1, &quot;normal&quot;, ifelse(cholesterol == 2, &quot;above normal&quot;, &quot;well above normal&quot;))) %&gt;% mutate(gluc = ifelse(gluc == 1, &quot;normal&quot;, ifelse(gluc == 2, &quot;above normal&quot;, &quot;well above normal&quot;))) %&gt;% rename(glucose = gluc) # categorical variables
+cardio3 &lt;- cardio2 %&gt;% mutate(gender = ifelse(gender== 1, &quot;female&quot;, &quot;male&quot;)) 
+cardio4 &lt;- cardio3 %&gt;% mutate(MAP = (systolic_bp/3) + ((2*diastolic_bp)/3)) %&gt;% mutate(height = height/100) %&gt;% mutate(BMI = weight/(height * height)) %&gt;% dplyr::select(MAP, BMI, id) %&gt;% round(2)
+cardio5 &lt;- cardio3 %&gt;% full_join(cardio4, by = &quot;id&quot;)
+cardio6 &lt;- cardio5 %&gt;% dplyr::select(-1, -systolic_bp, -diastolic_bp) %&gt;% rename(cardiac_disease = cardio) %&gt;% filter(MAP &lt; 150 &amp; MAP &gt; 60 &amp; BMI &lt; 50) %&gt;% head(1000) 
+cardio6</code></pre>
+<pre><code>## # A tibble: 1,000 x 12
+##      age gender height weight cholesterol glucose smoke  alco active
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1  50.4 male      168     62 normal      normal      0     0      1
+##  2  55.4 female    156     85 well above… normal      0     0      1
+##  3  51.7 female    165     64 well above… normal      0     0      0
+##  4  48.3 male      169     82 normal      normal      0     0      1
+##  5  47.9 female    156     56 normal      normal      0     0      0
+##  6  60.0 female    151     67 above norm… above …     0     0      0
+##  7  60.6 female    157     93 well above… normal      0     0      1
+##  8  61.9 male      178     95 well above… well a…     0     0      1
+##  9  48.4 female    158     71 normal      normal      0     0      1
+## 10  54.3 female    164     68 normal      normal      0     0      0
+## # … with 990 more rows, and 3 more variables: cardiac_disease &lt;dbl&gt;,
+## #   MAP &lt;dbl&gt;, BMI &lt;dbl&gt;</code></pre>
+<pre class="r"><code>cardio6$MAP_c &lt;- cardio6$MAP - mean(cardio6$MAP)
+cardio6$BMI_c &lt;- cardio6$BMI - mean(cardio6$BMI)
+
+cardio8&lt;-cardio6 %&gt;% mutate(cholesterol = ifelse(cholesterol == &quot;normal&quot;, 1, ifelse(cholesterol == &quot;above normal&quot;,2 , 3))) %&gt;% mutate(glucose = ifelse(glucose == &quot;normal&quot;, 1, ifelse(glucose == &quot;above normal&quot;, 2, 3))) %&gt;% mutate(gender = ifelse(gender == &quot;female&quot;, 1, 2)) # cat back to num ; female = 1 / male =2
+cardio8 &lt;- cardio8 %&gt;% mutate_if(is.factor, as.numeric)
+cardio8</code></pre>
+<pre><code>## # A tibble: 1,000 x 14
+##      age gender height weight cholesterol glucose smoke  alco active
+##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1  50.4      2    168     62           1       1     0     0      1
+##  2  55.4      1    156     85           3       1     0     0      1
+##  3  51.7      1    165     64           3       1     0     0      0
+##  4  48.3      2    169     82           1       1     0     0      1
+##  5  47.9      1    156     56           1       1     0     0      0
+##  6  60.0      1    151     67           2       2     0     0      0
+##  7  60.6      1    157     93           3       1     0     0      1
+##  8  61.9      2    178     95           3       3     0     0      1
+##  9  48.4      1    158     71           1       1     0     0      1
+## 10  54.3      1    164     68           1       1     0     0      0
+## # … with 990 more rows, and 5 more variables: cardiac_disease &lt;dbl&gt;,
+## #   MAP &lt;dbl&gt;, BMI &lt;dbl&gt;, MAP_c &lt;dbl&gt;, BMI_c &lt;dbl&gt;</code></pre>
+<p><strong>MANOVA &amp; ANOVA</strong></p>
+<p>Testing whether MAP and BMI differ by presence/absence of cardiovascular disease.</p>
+<pre class="r"><code>ggplot(cardio8, aes(x = BMI, y = MAP)) + 
+  geom_point(alpha = .5) + coord_fixed() + geom_density_2d(h=30) + facet_wrap(~cholesterol) # Eyeball assumptions: multivariate normality</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>covmats&lt;-cardio8%&gt;%group_by(cholesterol)%&gt;%do(covs=cov(.[11:12]))
+for(i in 1:3){print(covmats$covs[i])} # Eyeball assumptions: homogeneity of (co)variances</code></pre>
+<pre><code>## [[1]]
+##            MAP       BMI
+## MAP 107.996534  8.086566
+## BMI   8.086566 22.464509
+## 
+## [[1]]
+##            MAP       BMI
+## MAP 125.499013  9.562038
+## BMI   9.562038 26.000788
+## 
+## [[1]]
+##           MAP      BMI
+## MAP 120.81787  8.60016
+## BMI   8.60016 21.90933</code></pre>
+<p><strong>Assumptions:</strong></p>
+<p>The assumptions required to perfrom a MANOVA test include random samples, independent observations, multivariate normality of DVs, homogeneity of within-gp covariance matrices, linear relationships among DVs, no extreme univariate or multivariate outliers, no multicollinearity. Based on the graphs above, it does not appear as if the DVs have multivariate normality and outliers are present. Because there are so many assumptions, it is unlikely they are all met. For example, the exact method of obtaining this data is not known and only a small subset of observations (1000 out of ~70k observations) is being analyzed, therefore random sampling is not met. The covariance matrices do not appear to be relatively homogeneous and outliers were removed from the data set. However, extreme departures from normality were not present in the bivariate density plots for each cholesterol level. It is uncertain as to whether the MANOVA test is an appropriate analysis technique*</p>
+<p><strong>Hypotheses:</strong></p>
+<p>H0: For BMI and MAP, the means of each cholesterol level are equal</p>
+<p>HA: For at least one DV, at least one cholosterol level mean is different</p>
+<pre class="r"><code>man1&lt;-manova(cbind(MAP_c, BMI_c)~cholesterol, data=cardio8)
+summary(man1) #overall MANOVA is significant</code></pre>
+<pre><code>##              Df   Pillai approx F num Df den Df    Pr(&gt;F)    
+## cholesterol   1 0.095777   52.802      2    997 &lt; 2.2e-16 ***
+## Residuals   998                                              
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>summary.aov(man1) # univariate ANOVA to see which are significant </code></pre>
+<pre><code>##  Response MAP_c :
+##              Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## cholesterol   1  10209 10209.2  91.109 &lt; 2.2e-16 ***
+## Residuals   998 111831   112.1                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+##  Response BMI_c :
+##              Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## cholesterol   1   660.1  660.14    28.7 1.049e-07 ***
+## Residuals   998 22955.3   23.00                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>A one-way multivariate analysis of variance (MANOVA) was conducted to determine the effect of BMI, and MAP on the dependent variable (cholesterol level).</p>
+<p>With a p-value of approximately 2.2e-16, the null hypothesis is rejected (p &lt; 0.05, alpha). This indicates that for at least one response variable, at least one group mean significantly differs. It was therefore appropriate to run univariate ANOVA tests to determine which are significantly different. MAP and BMI are all significantly different, with p-values of approximately 2.2e-16 and 1.049e-07, respectively.</p>
+<p>Significant differences were found among the three cholesterol level on the two dependent measures: Pillai trace = 0.096, pseudo F (2, 997) = 52.802, p &lt; 0.0001.</p>
+<p>Univariate analyses of variance (ANOVAs) for each dependent variable were conducted as follow-up tests to the MANOVA, using the Bonferroni method for controlling Type I error rates for multiple comparisons. The univariate ANOVAs for BMI and MAP were also significant, F (1, 998) = 28.7, p &lt; .0001, and F (1, 998) = 91.109, p =&lt; .0001, respectively.</p>
+<p><strong>Individual T-Tests</strong></p>
+<pre class="r"><code>pairwise.t.test(cardio6$BMI,cardio6$cholesterol, p.adj=&quot;none&quot;) # individual ttests</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  cardio6$BMI and cardio6$cholesterol 
+## 
+##                   above normal normal 
+## normal            3.2e-06      -      
+## well above normal 0.85         3.0e-05
+## 
+## P value adjustment method: none</code></pre>
+<pre class="r"><code>pairwise.t.test(cardio6$MAP,cardio6$cholesterol, p.adj=&quot;none&quot;) # individual ttests</code></pre>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  cardio6$MAP and cardio6$cholesterol 
+## 
+##                   above normal normal 
+## normal            5.7e-08      -      
+## well above normal 0.0065       &lt; 2e-16
+## 
+## P value adjustment method: none</code></pre>
+<pre class="r"><code>0.05/9</code></pre>
+<pre><code>## [1] 0.005555556</code></pre>
+<pre class="r"><code># P(at least one Type I error) = 1-(1-alpha)^(number of tests run)
+1-(1-0.05)^9 # P(type I)</code></pre>
+<pre><code>## [1] 0.3697506</code></pre>
+<p>Post hoc analysis was performed conducting pairwise comparisons to determine which cholesterol levels differed in BMI and MAP. For BMI, normal cholesterol levels significantly differed from above normal and well above normal cholesterol levels after adjusting for multiple comparisons, with p-values less than 0.0055 (bonferroni). Under the bonferroni adjustment, the above normal and well above normal cholesterol levels did not significantly differ in terms of BMI (p-value = 0.85, which is greater than 0.0055, the adujusted alpha). For MAP, normal cholesterol levels significantly differed from above normal and well above normal cholesterol levels after adjusting for multiple comparisons, with p-values &lt; 0.0055 (bonferroni). Under the bonferroni adjustment, the above normal and well above normal cholesterol levels did not significantly differ in terms of MAP (p-value = 0.0065 &gt; adjusted alpha).</p>
+<p>Number of tests performed: 1 MANOVA, 2 ANOVAS, 2x3 (6) t-tests = 9 total tests
+Bonferroni correction: alpha = 0.05/13 = 0.0055
+Probability of Type I error if unadjusted = 0.3698</p>
+<p><strong>Randomization Test - PERMANOVA</strong></p>
+<p>Because the MANOVA assumptions were likely violated, a PERMANOVA test was performed. With a PERMANOVA test, there are no distributional assumptions, it allows for differences in variances and covariances, it’s not sensitive to multicollinearity, it allows more variables than samples, and it’s not sensitive to many 0s/outliers</p>
+<p><strong>Hypotheses:</strong>
+H0: centroids and dispersion of the cholesterol level groups, as defined by measure space, are equivalent for all groups</p>
+<p>HA: centroids and dispersion of the cholesterol level groups, as defined by measure space, are not equivalent for all groups</p>
+<pre class="r"><code>library(vegan)
+cardio6$cholesterol &lt;- as.factor(cardio6$cholesterol)
+dists &lt;- cardio6%&gt;% dplyr::select(BMI, MAP)%&gt;%dist() # distances/dissimilarities
+adonis(dists~cholesterol,data=cardio6) # PERMANOVA on distances/dissimilarities</code></pre>
+<pre><code>## 
+## Call:
+## adonis(formula = dists ~ cholesterol, data = cardio6) 
+## 
+## Permutation: free
+## Number of permutations: 999
+## 
+## Terms added sequentially (first to last)
+## 
+##              Df SumsOfSqs MeanSqs F.Model      R2 Pr(&gt;F)    
+## cholesterol   2     11077  5538.6  41.032 0.07605  0.001 ***
+## Residuals   997    134578   135.0         0.92395           
+## Total       999    145655                 1.00000           
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>F model = 41.032</p>
+<p><strong>PERMANOVA by hand</strong></p>
+<pre class="r"><code>cardio6 %&gt;% filter(cholesterol == &quot;normal&quot;) %&gt;% nrow</code></pre>
+<pre><code>## [1] 732</code></pre>
+<pre class="r"><code>cardio6 %&gt;% filter(cholesterol == &quot;above normal&quot;) %&gt;% nrow</code></pre>
+<pre><code>## [1] 143</code></pre>
+<pre class="r"><code>cardio6 %&gt;% filter(cholesterol == &quot;well above normal&quot;) %&gt;% nrow</code></pre>
+<pre><code>## [1] 125</code></pre>
+<pre class="r"><code># observed F
+SST&lt;- sum(dists^2)/1000
+SSW&lt;- cardio6 %&gt;%group_by(cholesterol)%&gt;%dplyr::select(BMI, MAP)%&gt;%
+do(d=dist(.[2:3],&quot;euclidean&quot;))%&gt;%ungroup()%&gt;%
+summarize(sum(d[[1]]^2)/143 + sum(d[[2]]^2)/732+ sum(d[[3]]^2)/125)%&gt;%pull
+F_obs&lt;-((SST-SSW)/2)/(SSW/997) #observed F statistic
+F_obs</code></pre>
+<pre><code>## [1] 41.0318</code></pre>
+<p>F by hand = 41.0318, matches adonis() F value of 41.032</p>
+<pre class="r"><code># null distribution for F
+set.seed(55)
+Fs&lt;-replicate(1000,{
+new&lt;-cardio6%&gt;%mutate(Cholesterol=sample(cholesterol)) #permute the species vector 
+
+SSW2&lt;-new %&gt;% group_by(Cholesterol) %&gt;% dplyr::select(BMI, MAP) %&gt;% do(d=dist(.[2:3],&quot;euclidean&quot;))%&gt;%ungroup() %&gt;%
+  summarize(sum(d[[1]]^2)/143 + sum(d[[2]]^2)/732+ sum(d[[3]]^2)/125)%&gt;%pull
+
+((SST-SSW2)/2)/(SSW2/997) #calculate new F on randomized data
+})</code></pre>
+<pre class="r"><code>mean(Fs&gt;F_obs) # p-value </code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>{hist(Fs,prob = T); abline(v=F_obs, col=&quot;red&quot;, add=T)}</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Computing the PERMANOVA by hand resulted in a p-value of 0 (p &lt; alpha). Therefore, the null hypothesis that the centroids and dispersion of the cholesterol level groups, as defined by measure space, are equivalent for all groups is rejected. This further supports the assertion that the cholesterol groups significantly differ in terms of BMI and MAP.</p>
+<p><strong>Linear regression model predict MAP from BMI and active (yes/no)</strong></p>
+<p><strong>Hypotheses:</strong>
+H0: while controlling for active, BMI does not explain variation in MAP (b2 = 0)</p>
+<p>HA: while controlling for BMI, active does not explain variation in MAP (b3 = 0)</p>
+<pre class="r"><code>library(sandwich)
+library(lmtest)
+fit2&lt;-lm(MAP_c~BMI_c*active,data=cardio8) # with interactions
+summary(fit2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = MAP_c ~ BMI_c * active, data = cardio8)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -32.097  -5.610  -1.758   6.745  43.631 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    0.2680     0.7332   0.365    0.715    
+## BMI_c          0.6200     0.1564   3.964 7.91e-05 ***
+## active        -0.3406     0.8292  -0.411    0.681    
+## BMI_c:active  -0.1915     0.1752  -1.093    0.275    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.83 on 996 degrees of freedom
+## Multiple R-squared:  0.04354,    Adjusted R-squared:  0.04066 
+## F-statistic: 15.11 on 3 and 996 DF,  p-value: 1.263e-09</code></pre>
+<pre class="r"><code>coeftest(fit2, vcov = vcovHC(fit2))</code></pre>
+<pre><code>## 
+## t test of coefficients:
+## 
+##              Estimate Std. Error t value  Pr(&gt;|t|)    
+## (Intercept)   0.26796    0.70564  0.3797 0.7042157    
+## BMI_c         0.61998    0.16690  3.7147 0.0002148 ***
+## active       -0.34061    0.80727 -0.4219 0.6731695    
+## BMI_c:active -0.19150    0.18497 -1.0353 0.3007736    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>MAP_c = 0.2680 + 0.6200(BMI_c) - 0.3406(active) - 0.1915(BMI_c * active)</p>
+<p>For an individual with a centered BMI of 0 and who is not active, their centered MAP is 0.2680. For each 1 unit increase for the centered BMI, centered MAP increases by 0.62. If an individual is active, their centered MAP decreases by 0.3406. For each 1 unit increase in the interaction of centered BMI and active, centered MAP decreases by 0.1915</p>
+<p>Using robust standard errors, the standard error for the intercept decreases from 0.7332 to 0.70564 (from standard error to robust standard error). This is unexpected because robust errors tend to be more conservative and are typically larger. For BMI_c, the standard error increased from 0.1564 (original) to 0.16690 (robust), for active it decreased from 0.8292 to 0.80727, and for the interaction of BMI_C:active, the standard error increased from 0.1752 to a robust standard error of 0.18497.</p>
+<pre class="r"><code>resids&lt;-fit2$residuals
+fitvals&lt;-fit2$fitted.values
+ggplot(cardio8,aes(MAP_c,BMI_c,color=active))+geom_point() + theme(legend.position = &quot;NONE&quot;)</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>ggplot()+geom_point(aes(fitvals,resids))+geom_hline(yintercept=0, color=&#39;red&#39;) # homoskedasticity </code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<pre class="r"><code>ggplot()+geom_histogram(aes(resids), bins=20) # normality</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<pre class="r"><code>ks.test(resids, &quot;pnorm&quot;, mean=0, sd(resids)) # formal test for normality; H0: distribution is normal; HA: distribution is not normal</code></pre>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  resids
+## D = 0.11512, p-value = 6.163e-12
+## alternative hypothesis: two-sided</code></pre>
+<p>Based on the graph, the assumptions of homoskedasticity and linearity have been met as there is no fanning out and the relationship ship looks approximately linear (no curvy stuff going on). Based on the Kolmogorov-Smirnov test and the histogram indicate that the data is approximately normal.</p>
+<p><strong>Plot of the Regression:</strong></p>
+<pre class="r"><code>cardio8$active &lt;- as.factor(cardio8$active)
+ggplot(cardio8, aes(x=BMI_c,y=MAP_c,group=active))+geom_point(aes(color=active))+
+ geom_smooth(method=&quot;lm&quot;,se=F,fullrange=T,aes(color=active))+
+theme(legend.position=c(.9,.19))+xlab(&quot;BMI_c&quot;) </code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>(sum((cardio8$MAP_c-mean(cardio8$MAP_c))^2)-sum(fit2$residuals^2))/sum((cardio8$MAP_c-mean(cardio8$MAP_c))^2)</code></pre>
+<pre><code>## [1] 0.04354353</code></pre>
+<p>The calculated value above represents R^2 - 4.35% of the variation in MAP explained by the overall model (all predictors at once)</p>
+<pre class="r"><code>fit3&lt;-lm(MAP_c~BMI_c+active,data=cardio8) # without interactions
+coef(fit3)</code></pre>
+<pre><code>## (Intercept)       BMI_c     active1 
+##   0.2620873   0.4673271  -0.3351500</code></pre>
+<p>Running the same regression model without interactions, MAP_c = 0.26209 + 0.467(BMI_c) - 0.335(active). For an individual with a BMI of 0 that is not active, their centered MAP is 0.26209. For each 1 unit increase in centered BMI, centered MAP increases by 0.467. If the individual is active, centered MAP decreases by 0.335.</p>
+<p><strong>Regression model with interaction and bootstrapped standard errors</strong></p>
+<pre class="r"><code>set.seed(55)
+boot_cardio&lt;-cardio8[sample(nrow(cardio8),replace=TRUE),]
+
+# repeat 5000 times, saving the coefficients each time
+samp_distn&lt;-replicate(5000, {
+  boot_cardio&lt;-cardio8[sample(nrow(cardio8),replace=TRUE),]
+  fit&lt;-lm(MAP_c~BMI_c*active,data=boot_cardio) 
+  coef(fit)
+})
+
+## Estimated SEs, robust SE
+samp_distn%&gt;%t%&gt;%as.data.frame%&gt;%summarize_all(sd)</code></pre>
+<pre><code>##   (Intercept)     BMI_c   active1 BMI_c:active1
+## 1   0.6959461 0.1601968 0.7979983      0.176312</code></pre>
+<p>The bootstrapped SE were slightly different from the original standard errors and robust standard errors. For the intercept, the bootstrapped standard error was 0.6959, which is lower than the original SE (0.7332) and the robust SE (0.70564). For the centered BMI, the bootstrapped SE of 0.1602 was between the original SE (0.1564) and robust SE (0.16690). For active, the bootstrapped SE of 0.7980 was below both the original and robust SE (0.8292 and 0.80727, respectively). The bootstrapped SE for the interaction of BMI_c:active was 0.1763, which is between the original SE (0.1752) and robust SE (0.18497.). Based on these results, the bootstrapped SE are not extremely conservative compared to other methods of finding SE.</p>
+<p><strong>Logistic regression predicting a binary categorical variable from two explanatory variables</strong></p>
+<pre class="r"><code>fit3 &lt;- glm(cardiac_disease~BMI_c+MAP_c,family=binomial(link=&quot;logit&quot;), data = cardio6)
+coeftest(fit3)</code></pre>
+<pre><code>## 
+## z test of coefficients:
+## 
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) 0.0469332  0.0717627  0.6540  0.51311    
+## BMI_c       0.0284000  0.0150165  1.8912  0.05859 .  
+## MAP_c       0.1061120  0.0086333 12.2910  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>0.0469332+0.0284000</code></pre>
+<pre><code>## [1] 0.0753332</code></pre>
+<pre class="r"><code>exp(0.0753332)</code></pre>
+<pre><code>## [1] 1.078243</code></pre>
+<pre class="r"><code>0.0469332+0.1061120</code></pre>
+<pre><code>## [1] 0.1530452</code></pre>
+<pre class="r"><code>exp(0.1530452)</code></pre>
+<pre><code>## [1] 1.165378</code></pre>
+<pre class="r"><code>exp(0.0469)</code></pre>
+<pre><code>## [1] 1.048017</code></pre>
+<p>For a BMI_c and MAP_c of 0, log-odds is 0.0469, with an odds of cardiac disease of e^0.0469 = 1.0481. For a one unit increase in BMI_c, log-odds is 0.0469+0.0284 = 0.0753332 and the odds of cardiac disease is e^0.0753332 = 1.078243. For a one unit increase in MAP_c and a BMI_c of 0, log-odds is 0.0469+0.10611 = 0.1530452 and odds of cardiac disease is e^0.1530452 = 1.165378. As BMIs and MAPs are typically larger (between 18-40 and 60-150 respectively), these values are reasonable. One additional BMI point increases cardiac odds by a factor of 1.08l one additional MAP point increases cardiac odds by a factor of 1.17.</p>
+<pre class="r"><code>cardio7 &lt;- cardio6
+cardio7$prob&lt;-predict(fit3,type=&quot;response&quot;) #get predictions
+cardio7$pred&lt;-ifelse(cardio7$prob&gt;.5,1,0)
+table(truth=cardio7$cardiac_disease, prediction=cardio7$pred)%&gt;%addmargins</code></pre>
+<pre><code>##      prediction
+## truth    0    1  Sum
+##   0    406   92  498
+##   1    199  303  502
+##   Sum  605  395 1000</code></pre>
+<pre class="r"><code>(406+303)/1000 # accuracy</code></pre>
+<pre><code>## [1] 0.709</code></pre>
+<pre class="r"><code>303/502# tpr/sensitivity </code></pre>
+<pre><code>## [1] 0.6035857</code></pre>
+<pre class="r"><code>406/498 #tnr/specificity </code></pre>
+<pre><code>## [1] 0.815261</code></pre>
+<pre class="r"><code>303/395 # ppv / positive predicted value/ precision  </code></pre>
+<pre><code>## [1] 0.7670886</code></pre>
+<p>The accuracy is 70.9% and the PPV is 76.71%, both of which are fair. The sensitivity is 60.36% which is considered bad due to how low it is - this means the model is not as likely to accurately predict cardiac disease (true positive). The specificity is 81.53% which is considered good - this means the model is more likely to accurately predict the absense of cardiac disease (true negative)</p>
+<p>Density plot of log-odds by your cardac disease</p>
+<pre class="r"><code>cardio7$cardiac_disease &lt;- as.factor(cardio6$cardiac_disease)
+cardio7$logit&lt;-predict(fit3,type=&quot;link&quot;)
+cardio7%&gt;%ggplot()+geom_density(aes(logit,color=cardiac_disease,fill=cardiac_disease), alpha=.4)+
+  theme(legend.position=c(.85,.85))+geom_vline(xintercept=0)+xlab(&quot;predictor (logit)&quot;)</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><strong>ROC Curve</strong></p>
+<pre class="r"><code>library(tidyverse)
+library(MASS)
+library(lmtest)
+library(plotROC)
+
+sens&lt;-function(p,data=cardio7, y=cardiac_disease) mean(cardio7[cardio7$cardiac_disease==1,]$prob&gt;p)
+spec&lt;-function(p,data=cardio7, y=cardiac_disease) mean(cardio7[cardio7$cardiac_disease==0,]$prob&lt;p)
+
+sensitivity&lt;-sapply(seq(0,1,.01),sens,data)
+specificity&lt;-sapply(seq(0,1,.01),spec,data)
+
+ROC1&lt;-data.frame(sensitivity,specificity,cutoff=seq(0,1,.01))
+
+ROC1%&gt;%gather(key,rate,-cutoff)%&gt;%ggplot(aes(cutoff,rate,color=key))+geom_path()+
+  geom_vline(xintercept=c(.1,.5,.9),lty=2,color=&quot;gray50&quot;)</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre class="r"><code>ROC1$TPR&lt;-rev(sensitivity)
+ROC1$FPR&lt;-rev(1-specificity)
+
+rocPlot &lt;- ROC1%&gt;%ggplot(aes(FPR,TPR))+geom_path(size=1.5)+geom_segment(aes(x=0,y=0,xend=1,yend=1),lty=2)+
+  scale_x_continuous(limits = c(0,1))
+
+rocPlot</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<pre class="r"><code>library(pROC)
+auc(cardio7$cardiac_disease,cardio7$prob)</code></pre>
+<pre><code>## Area under the curve: 0.7733</code></pre>
+<p><em>AUC is 0.7733 - which is considered to be a fair estimate. This is expected because the sensitivity was lower than the specificity. The AUC captures this trade-off between sensitivity and specificity.</em></p>
+<div id="perform-10-fold-or-repeated-random-sub-sampling-cv-and-report-average-out-of-sample-accuracy-sensitivity-and-recall-10" class="section level6">
+<h6>– Perform 10-fold (or repeated random sub-sampling) CV and report average out-of-sample Accuracy, Sensitivity, and Recall (10)</h6>
+<pre class="r"><code>class_diag&lt;-function(probs,truth){
+
+tab&lt;-table(factor(probs&gt;.5,levels=c(&quot;FALSE&quot;,&quot;TRUE&quot;)),truth)
+acc=sum(diag(tab))/sum(tab)
+sens=tab[2,2]/colSums(tab)[2]
+spec=tab[1,1]/colSums(tab)[1]
+ppv=tab[2,2]/rowSums(tab)[2]
+
+if(is.numeric(truth)==FALSE &amp; is.logical(truth)==FALSE) truth&lt;-as.numeric(truth)-1
+
+#CALCULATE EXACT AUC
+
+ord&lt;-order(probs, decreasing=TRUE)
+probs &lt;- probs[ord]
+truth &lt;- truth[ord]
+
+TPR=cumsum(truth)/max(1,sum(truth))
+FPR=cumsum(!truth)/max(1,sum(!truth))
+
+dup&lt;-c(probs[-1]&gt;=probs[-length(probs)], FALSE)
+TPR&lt;-c(0,TPR[!dup],1); FPR&lt;-c(0,FPR[!dup],1)
+
+n &lt;- length(TPR)
+auc&lt;- sum( ((TPR[-1]+TPR[-n])/2) * (FPR[-1]-FPR[-n]) )
+
+data.frame(acc,sens,spec,ppv,auc)
+
+}
+
+class_diag(cardio7$prob,cardio7$cardiac_disease)</code></pre>
+<pre><code>##     acc      sens     spec       ppv       auc
+## 1 0.709 0.6035857 0.815261 0.7670886 0.7732844</code></pre>
+<pre class="r"><code>set.seed(55)
+k=10 #choose number of folds
+
+data1&lt;-cardio7[sample(nrow(cardio7)),] #randomly order rows
+folds&lt;-cut(seq(1:nrow(cardio7)),breaks=k,labels=F) #create folds
+
+diags&lt;-NULL
+for(i in 1:k){
+
+## Create training and test sets 
+  train&lt;-data1[folds!=i,] 
+  test&lt;-data1[folds==i,] 
+  truth&lt;-test$cardiac_disease
+
+## Train model on training set 
+  fit&lt;-glm(cardiac_disease~BMI_c + MAP_c,data=train,family=&quot;binomial&quot;) 
+  probs&lt;-predict(fit,newdata = test,type=&quot;response&quot;)
+
+## Test model on test set (save all k results) 
+  diags&lt;-rbind(diags,class_diag(probs,truth))
+
+}
+apply(diags,2,mean)</code></pre>
+<pre><code>##       acc      sens      spec       ppv       auc 
+## 0.7100000 0.6064857 0.8186028 0.7721679 0.7749565</code></pre>
+<p><em>For the 10-fold cross validation logistic regression, the average out-of-sample accuracy was 71.0% which is slightly higher than the original regression (70.9%). The 10-fold CV average out-of-sample sensitivity was 60.65%, which is slightly higher than the original regression (60.35%). The the 10-fold CV average out-of-sample specificity was 81.86%, which is slightly higher than the original (81.53%). The 10-fold CV average out-of-sample PPV was 77.22%, which is slightly higher than the original (76.61%). And the average out-of-sample AUC was 77.50%, which is slightly higher than the original (77.33%).</em></p>
+<p><em>Because the model did not do more poorly in CV (it did not have a lower AUC), the model does not appear to be overfit</em></p>
+</div>
+<div id="lasso-regression-predicting-cardiac-disease-with-all-other-variables-as-predictors" class="section level5">
+<h5>LASSO Regression predicting cardiac disease with all other variables as predictors</h5>
+<pre class="r"><code>library(glmnet)
+
+cardio8&lt;- cardio8 %&gt;% mutate_if(is.factor, as.numeric)
+x&lt;-cardio8%&gt;%dplyr::select(-cardiac_disease, -BMI_c, -MAP_c)%&gt;%mutate_all(scale)%&gt;%as.matrix
+y&lt;-as.matrix(cardio8$cardiac_disease)
+cv1&lt;-cv.glmnet(x,y)
+cv1</code></pre>
+<pre><code>## 
+## Call:  cv.glmnet(x = x, y = y) 
+## 
+## Measure: Mean-Squared Error 
+## 
+##      Lambda Measure       SE Nonzero
+## min 0.00795  0.1881 0.005784       7
+## 1se 0.05110  0.1935 0.003998       3</code></pre>
+<pre class="r"><code>plot(cv1$glmnet.fit, &quot;lambda&quot;, label=TRUE) +
+  abline(v = log(cv1$lambda.1se)) +
+  abline(v = log(cv1$lambda.min),lty=2)</code></pre>
+<p><img src="/Project2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre><code>## integer(0)</code></pre>
+<pre class="r"><code>lasso1&lt;-glmnet(x,y,lambda=cv1$lambda.1se)
+coef(lasso1)</code></pre>
+<pre><code>## 12 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                     s0
+## (Intercept) 0.50200000
+## age         0.03804297
+## gender      .         
+## height      .         
+## weight      .         
+## cholesterol 0.04108789
+## glucose     .         
+## smoke       .         
+## alco        .         
+## active      .         
+## MAP         0.15707029
+## BMI         .</code></pre>
+<p><em>In order to use all the variables as predictors, the categorical variables were coerced into numeric variables to make dataset cardio8 (see above). For cholesterol and glucose levels, the value of 1 is equivalent to a “normal” level, 2 is equivalent to an “above normal” level, and 3 is equivalent to an “above normal” level. Gender was coerced so that 1 indicates female and 2 indicates male. The centered BMI and MAP were not used due to redundancy. The lambda that gives the simplest model whose accuracy is near that of the ‘best’ is 0.0511 with 3 non-zero variables. The three retained variables are age, cholesterol, and MAP.</em></p>
+</div>
+<div id="fold-cv-using-the-lassod-model-above" class="section level5">
+<h5>10-fold CV using the LASSO’d model above</h5>
+<pre class="r"><code>data1&lt;-cardio8[sample(nrow(cardio8)),]
+folds&lt;-cut(seq(1:nrow(cardio8)),breaks=k,labels=F)
+
+set.seed(55)
+diags&lt;-NULL
+for(i in 1:k){
+
+  train&lt;-data1[folds!=i,]
+  test&lt;-data1[folds==i,]
+  truth&lt;-test$cardiac_disease
+
+  fit&lt;-glm(cardiac_disease~age+cholesterol+MAP,data=train,family=&quot;binomial&quot;)
+  probs&lt;-predict(fit,newdata = test,type=&quot;response&quot;)       
+  preds&lt;-ifelse(probs&gt;.5,1,0)
+
+diags&lt;-rbind(diags,class_diag(probs,truth))
+
+}
+
+diags%&gt;%summarize_all(mean)</code></pre>
+<pre><code>##     acc      sens      spec       ppv       auc
+## 1 0.727 0.6837337 0.7691029 0.7514835 0.8004746</code></pre>
+<p><em>The average out-of-sample accuracy from part 5 was 70.7%, which is lower than the LASSO’d accuracy of 72.7%. This indicates the LASSO’d model is more accurate in predicting cardiac disease.</em></p>
+</div>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <a href="/"><img src="/images/coffee.png" alt="Bailee Dastugue"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Contact Me</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark" href="tel:Yikes"><i
+                class="ti-mobile mr-3 text-primary"></i>Yikes</a></li>
+          <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>Austin, Texas</li>
+          <li class="mb-3"><a class="text-dark" href="mailto:bailee.dast@gmail.com"><i
+                class="ti-email mr-3 text-primary"></i>bailee.dast@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Social Contacts</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="#">facebook</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">twitter</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">instagram</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">github</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href=""></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Categories</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/projects">Projects</a>
+          </li>
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/rstudio">Rstudio</a>
+          </li>
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/web-design">Web design</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="/about/about">About</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="/blog">Post</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="/contact">Contact</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-12 border-top py-4 text-center">
+        | @2019 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var indexURL = "/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script></body>
+</html>

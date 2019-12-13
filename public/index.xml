@@ -21,16 +21,6 @@
     </item>
     
     <item>
-      <title>About Me</title>
-      <link>/about/about/</link>
-      <pubDate>Tue, 29 Oct 2019 13:49:23 +0600</pubDate>
-      
-      <guid>/about/about/</guid>
-      <description>My name is Bailee Dastugue (formerly Wallis).
-Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
-    </item>
-    
-    <item>
       <title>Hey Dummy</title>
       <link>/blog/post-4/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
@@ -68,12 +58,22 @@ I&#39;m an inline-style link with title</description>
     </item>
     
     <item>
+      <title>About Me</title>
+      <link>/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/about/</guid>
+      <description>My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
+    </item>
+    
+    <item>
       <title>Modeling and Predicting Cardiovascular Disease</title>
       <link>/blog/post-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/post-2/</guid>
-      <description>For some reason, there is an extreme over-representation of Dr. Manhattan&#39;s cardiovascular system.</description>
+      <description>here
+For some reason, there is an extreme over-representation of Dr.</description>
     </item>
     
     <item>
@@ -83,6 +83,34 @@ I&#39;m an inline-style link with title</description>
       
       <guid>/blog/baileewallis_project2/</guid>
       <description>bmw2695  Introduction This dataset was found using kaggle and involves a variety of numeric (age, weight, systolic BP, diastolic BP), scaled (glucose level, cholesterol level, and gender), and binary variables (active, smoker, alcohol use, cardiac disease).</description>
+    </item>
+    
+    <item>
+      <title>Project2</title>
+      <link>/blog/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/project2/</guid>
+      <description>bmw2695  Introduction This dataset was found using kaggle and involves a variety of numeric (age, weight, systolic BP, diastolic BP), scaled (glucose level, cholesterol level, and gender), and binary variables (active, smoker, alcohol use, cardiac disease).</description>
+    </item>
+    
+    <item>
+      <title>Project2</title>
+      <link>/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project2/</guid>
+      <description>Introduction
+This dataset was found using kaggle and involves a variety of numeric (age, weight, systolic BP, diastolic BP), scaled (glucose level, cholesterol level, and gender), and binary variables (active, smoker, alcohol use, cardiac disease).</description>
+    </item>
+    
+    <item>
+      <title>This is Project 1</title>
+      <link>/blog/post-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/post-1/</guid>
+      <description>Does this work In my computational biology class, our first project using RStudio focused on data wrangling and data exploration.</description>
     </item>
     
     <item>

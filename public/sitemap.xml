@@ -13,16 +13,6 @@
   </url>
   
   <url>
-    <loc>/about/about/</loc>
-    <lastmod>2019-10-29T13:49:23+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
-    <lastmod>2019-10-29T13:49:23+06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/</loc>
     <lastmod>2019-10-29T13:49:23+06:00</lastmod>
   </url>
@@ -48,12 +38,12 @@
   </url>
   
   <url>
-    <loc>/categories/rstudio/</loc>
+    <loc>/tags/rstudio/</loc>
     <lastmod>2019-10-29T10:07:47+06:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/rstudio/</loc>
+    <loc>/categories/rstudio/</loc>
     <lastmod>2019-10-29T10:07:47+06:00</lastmod>
   </url>
   
@@ -88,6 +78,14 @@
   </url>
   
   <url>
+    <loc>/about/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+  </url>
+  
+  <url>
     <loc>/blog/post-2/</loc>
   </url>
   
@@ -100,7 +98,19 @@
   </url>
   
   <url>
+    <loc>/blog/project2/</loc>
+  </url>
+  
+  <url>
+    <loc>/project2/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/rsudio/</loc>
+  </url>
+  
+  <url>
+    <loc>/blog/post-1/</loc>
   </url>
   
   <url>
