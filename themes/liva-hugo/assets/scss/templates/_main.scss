@@ -172,7 +172,7 @@
 /* markdown style */
 .content {
   * {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 
   h1,
@@ -181,7 +181,7 @@
   h4,
   h5,
   h6 {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   ol{
@@ -194,7 +194,7 @@
     li {
       position: relative;
       padding-left: 20px;
-      margin-bottom: 15px;
+      margin-bottom: px;
       list-style-type: none;
 
       &::before {

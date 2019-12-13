@@ -12,7 +12,6 @@ type: "featured"
 
 title: Project One
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,9 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE)
 ```
-
 #### About the Data Sets
-
 Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.
 
 #### Editing the Data Sets
@@ -168,7 +165,7 @@ FinalData %>% group_by(Region) %>% summarize(mean_ExcessHD=mean(PercentExcess_HD
 
 10. This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.
 
-#### Graphs
+### Graphs
 ```{r warning=FALSE}
 ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat="summary",fun.y="mean", position="dodge")+

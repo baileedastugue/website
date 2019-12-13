@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Hey Dummy</title>
+      <link>/blog/post-4/</link>
+      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>/blog/post-4/</guid>
+      <description>knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document.</description>
+    </item>
+    
+    <item>
       <title>This will eventually be project 3</title>
       <link>/blog/post-3/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
@@ -63,7 +72,7 @@ I&#39;m an inline-style link with title</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blog/post-1/</guid>
-      <description>In my computational biology class, our first project using RStudio focused on data wrangling and data exploration.</description>
+      <description>Does this work In my computational biology class, our first project using RStudio focused on data wrangling and data exploration.</description>
     </item>
     
     <item>

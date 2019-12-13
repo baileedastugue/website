@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Hey Dummy</title>
+      <link>/blog/post-4/</link>
+      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>/blog/post-4/</guid>
+      <description>knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document.</description>
+    </item>
+    
+    <item>
       <title>This will eventually be project 3</title>
       <link>/blog/post-3/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>

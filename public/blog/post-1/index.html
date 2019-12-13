@@ -140,12 +140,20 @@
         <img src="/images/caveman.png" class="img-fluid w-100 mb-4" alt="This is Project 1">
         
         <div class="content mb-5">
-          <p>In my computational biology class, our first project using RStudio focused on data wrangling and data exploration. The following post captures some of the highlights from my project, but excludes the more caveman-like tidying performed. I'm sure there was a more delicate way to forge a cohesive dataset, but big hammer do trick.</p>
+          <h4 id="does-this-work">Does this work</h4>
+<p>In my computational biology class, our first project using RStudio focused on data wrangling and data exploration. The following post captures some of the highlights from my project, but excludes the more caveman-like tidying performed. I'm sure there was a more delicate way to forge a cohesive dataset, but big hammer do trick.</p>
 <p><img src="/images/caveman.png" alt="image"></p>
 <p>The code in its entirety can be found (via RMarkdown), <a href="/Project1">here</a></p>
 <p>Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Overall, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set. In the future, I'd like to investigate how the prevalence of NAs for a particular state corresponds to that state's health outcomes - how a lack of complete data could be indicative of real ______.</p>
-<p>The</p>
-
+<pre><code class="language-{r" data-lang="{r">library(ggplot2)
+library(tidyr)
+library(tidyverse)
+diabetes &lt;- read.csv(&quot;~/Desktop/website/content/blog/Diabetes.csv&quot;)
+COD &lt;- read.csv(&quot;~/Desktop/website/content/blog/ExcessDeaths.csv&quot;)
+COD_Canc &lt;- COD %&gt;% select(-HHS.Region) %&gt;% filter(Age.Range == &quot;0-49&quot;, Locality == &quot;All&quot;, Benchmark == &quot;Floating&quot;, Cause.of.Death == &quot;Cancer&quot;)
+COD_HD &lt;- COD %&gt;% select(-HHS.Region) %&gt;% filter(Age.Range == &quot;0-49&quot;, Locality == &quot;All&quot;, Benchmark == &quot;Floating&quot;, Cause.of.Death == &quot;Heart Disease&quot;)
+COD_St &lt;- COD %&gt;% select(-HHS.Region) %&gt;% filter(Age.Range == &quot;0-49&quot;, Locality == &quot;All&quot;, Benchmark == &quot;Floating&quot;, Cause.of.Death == &quot;Stroke&quot;)
+</code></pre>
         </div>
 
         

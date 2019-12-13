@@ -8,7 +8,7 @@ tags:
 - RSudio
 - New
 title: This is Project 2
-type: featured
+type: "featured"
 ---
 
 For some reason, beyond my current understanding of natural law, there is an extreme over-representation of Dr. Manhattan's cardiovascular system. Is this because he is able to reconstruct himself to a size where his heart stucture is more clearly discernable? Has his contributions to modern understanding of anatomy and physiology been overlooked? This, of course, has nothing to do with my project. But. A girl can dare to dream.  

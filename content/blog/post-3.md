@@ -8,6 +8,7 @@ image:
 tags:
 - RStudio
 title: This will eventually be project 3
+type: "post"
 ---
 
 

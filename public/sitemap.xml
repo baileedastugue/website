@@ -33,6 +33,16 @@
   </url>
   
   <url>
+    <loc>/blog/post-4/</loc>
+    <lastmod>2019-10-29T10:07:47+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/rstudio/</loc>
+    <lastmod>2019-10-29T10:07:47+06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/rstudio/</loc>
     <lastmod>2019-10-29T10:07:47+06:00</lastmod>
   </url>
@@ -59,11 +69,6 @@
   
   <url>
     <loc>/categories/projects/</loc>
-    <lastmod>2019-10-17T10:07:47+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/rstudio/</loc>
     <lastmod>2019-10-17T10:07:47+06:00</lastmod>
   </url>
   
