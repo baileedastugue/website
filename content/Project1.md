@@ -1,11 +1,18 @@
 ---
-title: "Project I"
-author: "Bailee Wallis"
-date: "10/17/2019"
-output:
-  html_document: default
-  pdf_document: default
+categories:
+- Projects
+- RStudio
+date: "2019-10-17T10:07:47+06:00"
+description: this is meta description
+draft: false
+image: images/Coffee.jpeg
+tags:
+# post type
+type: "featured"
+
+title: Project One
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -30,12 +37,14 @@ COD_HD <- COD %>% select(-HHS.Region) %>% filter(Age.Range == "0-49", Locality =
 COD_St <- COD %>% select(-HHS.Region) %>% filter(Age.Range == "0-49", Locality == "All", Benchmark == "Floating", Cause.of.Death == "Stroke")
 ```
 I imported the two data sets from my home library and created three subsets on the basis of cause of death (COD): Cancer, Heart Disease, or Stroke. For each new data set, the age range was set at between 0-49, the location was set for the entire state, and the benchmark for estimating expected number of deaths was set to a floating estimate. This was done to make the data easier to work with.
+
 ```{r warning= FALSE}
 diabetes <- diabetes %>% select(-YearEnd,-DataSource,-Topic, -Response, -DataValueFootnoteSymbol, -LowConfidenceLimit, -HighConfidenceLimit, -StratificationCategory1, -Stratification1, -StratificationCategory2, -Stratification2, -StratificationCategory3, -Stratification3, -GeoLocation, -ResponseID, -LocationID, -TopicID, -QuestionID)
 diabetes <- diabetes %>% select(-DataValueAlt, -DatavalueFootnote, -DataValueTypeID, -StratificationCategoryID1, -StratificationID1, -StratificationCategoryID2, -StratificationID2, -StratificationCategoryID3, -StratificationID3)
 diabetes <- diabetes %>% select(-DataValueUnit)
 ```
 In this code, I refined the diabetes dataset to variables I thought were interesting by removing the ones I did not want to work with using selct(). More complete analysis could be performed if these removed variables were added back.
+
 ```{r warning= FALSE}
 diabetes1 <- diabetes %>% select(LocationDesc, Question, DataValue)
 #diabetes1 %>% pivot_wider(names_from = Question, values_from = DataValue) 
@@ -48,8 +57,7 @@ diabetes2 <- diabetes1 %>% select(-`DataValue.Dilated eye examination among adul
 diabetes3 <- diabetes2 %>% rename(DiabetesDiagnosed = `DataValue.Prevalence of diagnosed diabetes among adults aged >= 18 years`, DD_SMC = `DataValue.Adults with diagnosed diabetes aged >= 18 years who have taken a diabetes self-management course`, DD_HighBP = `DataValue.Prevalence of high blood pressure among adults aged >= 18 years with diagnosed diabetes`, DD_Depressive = `DataValue.Prevalence of depressive disorders among adults aged >= 18 years with diagnosed diabetes`, DD_HighChol = `DataValue.Prevalence of high cholesterol among adults aged >= 18 years with diagnosed diabetes`, DD_Women = `DataValue.Diabetes prevalence among women aged 18-44 years`, DD_GHb = `DataValue.Glycosylated hemoglobin measurement among adults aged >= 18 years with diagnosed diabetes`, State = `LocationDesc`)
 glimpse(diabetes3)
 ```
-##### The questions in the diabetes data set were renamed to more functional titles using select() and rename(). The variable 'LocationDesc' was renamed to 'State' so that this dataset could be easily joined later.
-
+The questions in the diabetes data set were renamed to more functional titles using select() and rename(). The variable 'LocationDesc' was renamed to 'State' so that this dataset could be easily joined later.
 
 ```{r pressure, echo=FALSE}
 COD2 <- COD_HD %>% select(-Benchmark, -Age.Range, -Year, -State.FIPS.Code, -Locality) %>% reshape(idvar = "State", timevar = "Cause.of.Death", direction = "wide") 
@@ -58,25 +66,25 @@ COD2_Canc <- COD_Canc %>% select(-Benchmark, -Age.Range, -Year, -State.FIPS.Code
 COD2_Canc <- COD2_Canc %>% rename(Deaths_Canc = `Observed.Deaths.Cancer`, ExpectedDeaths_Canc = `Expected.Deaths.Cancer`, ExcessDeaths_Canc = `Potentially.Excess.Deaths.Cancer`, PercentExcess_Canc = `Percent.Potentially.Excess.Deaths.Cancer`)
 COD2_St <- COD_St %>% select(-Benchmark, -Age.Range, -Year, -State.FIPS.Code, -Locality, -Population) %>% reshape(idvar = "State", timevar = "Cause.of.Death", direction = "wide") %>% rename(Deaths_Str = `Observed.Deaths.Stroke`, ExpectedDeaths_Str = `Expected.Deaths.Stroke`, ExcessDeaths_Str = `Potentially.Excess.Deaths.Stroke`, PercentExcess_Str = `Percent.Potentially.Excess.Deaths.Stroke`) %>% glimpse
 ```
-##### The COD data were tidied using select() and reshape() to wide. For some reason, I couldn't get pivot_wider() to work, but this function seemed to do something similar. The reasoning is the same as previously described above. By reshaping the data wider, there were not duplicate rows for each state. The variables were renamed using rename().
+The COD data were tidied using select() and reshape() to wide. For some reason, I couldn't get pivot_wider() to work, but this function seemed to do something similar. The reasoning is the same as previously described above. By reshaping the data wider, there were not duplicate rows for each state. The variables were renamed using rename().
 
 ``` {r warning= FALSE}
 COD_Full <- full_join(COD2_HD, COD2_Canc) 
 COD_Full <- COD_Full %>% full_join(COD2_St) %>% glimpse
 ```
-##### The three COD datasets were then combined using two full_join()s in order to retain all data from all columns and rows. 
+The three COD datasets were then combined using two full_join()s in order to retain all data from all columns and rows. 
 
 ```{r warning = FALSE}
 COD_Full2 <- COD_Full %>% select("PercentExcess_Canc", "PercentExcess_HD", "PercentExcess_Str") %>% mutate_if(is.factor, as.numeric) %>% mutate(ExcessLVL_Canc = ifelse(PercentExcess_Canc > 50, c("HIGH"), c("LOW")), ExcessLVL_HD = ifelse(PercentExcess_HD > 50, c("HIGH"), c("LOW")), ExcessLVL_Str = ifelse(PercentExcess_Str > 50, c("HIGH"), c("LOW"))) 
 COD_Full <- COD_Full %>% full_join(COD_Full2) 
 ```
-##### The Excess Deaths (%) for each each COD were used to create categorical variables. If the percentage was greater than 50%, the excess death level was categorized as HIGH. If it was less than 50%, it was categoized as LOW. The variables were first mutated from factor type to numeric type. This subset of ExcessLVLs was then added to the original data set.
+The Excess Deaths (%) for each each COD were used to create categorical variables. If the percentage was greater than 50%, the excess death level was categorized as HIGH. If it was less than 50%, it was categoized as LOW. The variables were first mutated from factor type to numeric type. This subset of ExcessLVLs was then added to the original data set.
 
 
 ```{r warning = FALSE}
 full_clean <- full_join(diabetes3, COD_Full, by = "State") %>% glimpse
 ```
-##### The COD and diabetes data sets were joined by State. Retaining the NAs in both datasets felt important because it could help explain where there were shortcomings in my analysis. The lack of data itself is informative because it could have implications for what is important to each state and areas for further data exploration.
+The COD and diabetes data sets were joined by State. Retaining the NAs in both datasets felt important because it could help explain where there were shortcomings in my analysis. The lack of data itself is informative because it could have implications for what is important to each state and areas for further data exploration.
 
 ```{r warning= FALSE}
 full_cleanX <- full_clean %>% mutate(Avg_PercentExcess = rowMeans(subset(full_clean, select = c(PercentExcess_Str, PercentExcess_Canc, PercentExcess_HD)), na.rm = TRUE))
@@ -86,81 +94,81 @@ full_clean3 <- full_clean2[-c(7, 31, 50, 51, 56, 22),]
 full_clean4 <- full_clean3 %>% mutate(ExcessDeathLVL = ifelse(Avg_PercentExcess >50, c("HIGH"), c("LOW")))
 full_clean4 %>% glimpse()
 ```
-##### The average percent excess for each state was calculated for the three causes of death (cancer, heart disease, and stroke) using the subset() function to select the desired variables. Subset() was used within rowMeans() to calculate the mean for these three selected variables. These were nested within mutate() to create a new column with the results for each state. This nesting was needed because just adding the three columns and dividing by 3 would produce NAs in the new column if any of the subset data was missing. If a state did not have data for a particular COD, it was omitted and its average was calculated using the available information. The categorical variables of HIGH and LOW were applied to this new variable. The functions mutate(), select(), and mutate_if() were used. The obvservations that did not have a corresponding state in the US (i.e. Puerto Rico, Virgin Islands,) were removed from the data set. 
+The average percent excess for each state was calculated for the three causes of death (cancer, heart disease, and stroke) using the subset() function to select the desired variables. Subset() was used within rowMeans() to calculate the mean for these three selected variables. These were nested within mutate() to create a new column with the results for each state. This nesting was needed because just adding the three columns and dividing by 3 would produce NAs in the new column if any of the subset data was missing. If a state did not have data for a particular COD, it was omitted and its average was calculated using the available information. The categorical variables of HIGH and LOW were applied to this new variable. The functions mutate(), select(), and mutate_if() were used. The obvservations that did not have a corresponding state in the US (i.e. Puerto Rico, Virgin Islands,) were removed from the data set. 
 
 ```{r warning= FALSE}
 library(stringr)
 st.reg <- data.frame(State = state.name, Region = state.region) %>% mutate_if(is.factor, as.character)
 FinalData <- full_clean4 %>% left_join(st.reg, by="State") %>% mutate_if(is.factor, as.numeric) %>% glimpse
 ```
-##### Each state was assigned a region based on its location in the US and that regional label was recorded in a new column using mutate_if(). First a dataframe of the regions was created and then it was joined to the diabetes and COD dataset using a left_join(). The left join was used to retain all the data in the complete data set but essentially tack on the regions at the end.
+Each state was assigned a region based on its location in the US and that regional label was recorded in a new column using mutate_if(). First a dataframe of the regions was created and then it was joined to the diabetes and COD dataset using a left_join(). The left join was used to retain all the data in the complete data set but essentially tack on the regions at the end.
 
-## Summary Statistics 
+#### Summary Statistics 
 ```{r warning= FALSE}
 FinalData %>% group_by(Region) %>% summarize_all(function(x)sum(is.na(x)))
 ```
 
-##### 1. The summarize_all() functino was used to sum the number of NAs in each column. The number of NAs indicates what is missing in the data set and can indicate sources of error in the analysis of this data. This shows that the variables from the diabtes data set has the most missing data. The amount of missing data can indicate error in the analysis performed on this data. 
+1. The summarize_all() function was used to sum the number of NAs in each column. The number of NAs indicates what is missing in the data set and can indicate sources of error in the analysis of this data. This shows that the variables from the diabtes data set has the most missing data. The amount of missing data can indicate error in the analysis performed on this data. 
 
 ```{r warning= FALSE}
 FinalData %>% group_by(Region) %>% summarize_if(is.numeric, mean, na.rm=T)
 ```
 
-##### 2. The summarize_if() function gathered the numeric values and averaged them, disregarding the NAs. Pretty consistently , the South had the greatest averages for each variable.
+2. The summarize_if() function gathered the numeric values and averaged them, disregarding the NAs. Pretty consistently , the South had the greatest averages for each variable.
 
 ```{r warning= FALSE}
 FinalData %>% group_by(ExcessDeathLVL)%>%summarize_if(is.numeric, mean, na.rm=T) %>% arrange(Avg_PercentExcess) %>% head
 ```
 
-##### 3. The joined data was grouped by excessive death level (high or low) and each numeric variable's mean was found using summarize_if() and then arranged by ascending average percent excess deaths. As expected, the LOW level appeared before the HIGH death level. This shows, on average, how far apart the HIGH and LOW states are for each variable. 
+3. The joined data was grouped by excessive death level (high or low) and each numeric variable's mean was found using summarize_if() and then arranged by ascending average percent excess deaths. As expected, the LOW level appeared before the HIGH death level. This shows, on average, how far apart the HIGH and LOW states are for each variable. 
 
 ```{r warning = FALSE}
 FinalData%>% arrange(desc(DiabetesDiagnosed)) %>% select(State, Region, DiabetesDiagnosed) %>% head
 FinalData%>% arrange(desc(Avg_PercentExcess)) %>% select(State, Region, Avg_PercentExcess) %>% head
 ```
 
-##### 4. Using arrange() and select(), it shows that the four states with the highest percentage of diagnosed diabetes are in the south. The six states with the highest percentage of potentially excess deaths are also in the south. Arkansas and Mississippi are present in both selections.
+4. Using arrange() and select(), it shows that the four states with the highest percentage of diagnosed diabetes are in the south. The six states with the highest percentage of potentially excess deaths are also in the south. Arkansas and Mississippi are present in both selections.
 
 ```{r warning= FALSE}
 graph <- FinalData %>% group_by(Region) %>% summarize_at(c("PercentExcess_HD","PercentExcess_Canc", "PercentExcess_Str", "Avg_PercentExcess"), mean, na.rm=T) %>% arrange(PercentExcess_HD)
 graph %>% head
 ```
 
-##### 5. The average Excess Deaths for HD, Cancer, and Stroke and the total Excess Deaths were summarized by region. Again, the south had the highest percent excess deaths for heart disease, cancer, and stroke.
+5. The average Excess Deaths for HD, Cancer, and Stroke and the total Excess Deaths were summarized by region. Again, the south had the highest percent excess deaths for heart disease, cancer, and stroke.
 
 
 ```{r warning= FALSE}
 FinalData %>% group_by(ExcessDeathLVL) %>% select(DiabetesDiagnosed, DD_HighChol) %>% summarize_if(is.numeric, list(min=min,max=max), na.rm=T)
 ```
 
-##### 6. Summarized by the categorical variables HIGH and LOW, the minimum and maximum values of diagnosed diabetes and high cholesterol were displayed. For Diagnosed Diabetes, the HIGH and LOW minimum and maximums were roughly 4-6% apart. This is consistent with the High Cholesterol minimums as well. However, the High Cholesterol maximum for both the HIGH and LOW excess death levels were roughly equal.
+6. Summarized by the categorical variables HIGH and LOW, the minimum and maximum values of diagnosed diabetes and high cholesterol were displayed. For Diagnosed Diabetes, the HIGH and LOW minimum and maximums were roughly 4-6% apart. This is consistent with the High Cholesterol minimums as well. However, the High Cholesterol maximum for both the HIGH and LOW excess death levels were roughly equal.
 
 ```{r warning= FALSE}
 FinalData %>% top_n(5, DD_HighChol) %>% arrange(desc(Avg_PercentExcess)) %>% select(State, Region)
 ```
 
-##### 7. The top 5 states with the highest cholesterol were Alabama, Tennessee, Florida, Delaware, and Wisconsin, in order from greatest percent excess deaths to least. Every state but Wisconsin is in the southern region. Way to go southern states, we continue to excel in this data analysis.
+7. The top 5 states with the highest cholesterol were Alabama, Tennessee, Florida, Delaware, and Wisconsin, in order from greatest percent excess deaths to least. Every state but Wisconsin is in the southern region. Way to go southern states, we continue to excel in this data analysis.
 
 ```{r warning= FALSE}
 selectedVar <- FinalData%>%select("DiabetesDiagnosed", "DD_HighBP", "DD_HighChol", "ExcessDeaths_Canc", "ExcessDeaths_Str", "ExcessDeaths_HD", "Avg_PercentExcess") %>%na.omit
 selectedVar%>%cor
 ```
 
-##### 8. A correlation matrix was created using the cor() function and NA values were omitted using na.omit. None of the variables appear to be strongly correlated, with the greatest magnitude of correlation existing between percent excess deaths due to cancer and high cholesterol (~0.341). 
+8. A correlation matrix was created using the cor() function and NA values were omitted using na.omit. None of the variables appear to be strongly correlated, with the greatest magnitude of correlation existing between percent excess deaths due to cancer and high cholesterol (~0.341). 
 
 ```{r warning= FALSE}
 FinalData %>% filter(Region == "North Central") %>% select(State, DiabetesDiagnosed, DD_HighBP, DD_HighChol, Avg_PercentExcess, ExcessDeathLVL) %>% arrange(ExcessDeathLVL)
 ```
 
-##### 9. The states in the North Central region have relatively low incidence of diabetes (<15% in each state) but, among those diagnosed with diabetes, they have high cholesterol and blood pressure. Every state in the North Central region has a LOW excess death level.
+9. The states in the North Central region have relatively low incidence of diabetes (<15% in each state) but, among those diagnosed with diabetes, they have high cholesterol and blood pressure. Every state in the North Central region has a LOW excess death level.
 
 ```{r warning = FALSE}
 FinalData %>% group_by(Region) %>% summarize(mean_ExcessHD=mean(PercentExcess_HD,na.rm=T), sd_ExcessHD=sd(PercentExcess_HD, na.rm=T))
 ```
 
-##### 10. This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.
+10. This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.
 
-## Graphs
+#### Graphs
 ```{r warning=FALSE}
 ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat="summary",fun.y="mean", position="dodge")+
@@ -169,7 +177,7 @@ ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   ggtitle("Diabetes Diagnoses by Region") + theme_minimal()
 ```
 
-##### This bar graph illustrates the previous findings above in a clearer manner: the south has excess death levels in conjuction with elevated diabetes diagnoses. 
+This bar graph illustrates the previous findings above in a clearer manner: the south has excess death levels in conjuction with elevated diabetes diagnoses. 
 
 ```{r warning= FALSE}
 ggplot(FinalData, aes(DD_HighChol,Deaths_Canc))+
@@ -179,7 +187,7 @@ ggplot(FinalData, aes(DD_HighChol,Deaths_Canc))+
 
 ```
 
-##### This graph shows the relationship between diabetes and high cholesterol diagnosis on cancer deaths. In accoradance with the the correlation matrix above, the two variables are moderately correlated. Interestingly, there is a north central state that has a low incidence of high cholestoral but a high rate of cancer. The large point size implies that this is an excessive amount of cancer deaths (40% or greater)
+This graph shows the relationship between diabetes and high cholesterol diagnosis on cancer deaths. In accoradance with the the correlation matrix above, the two variables are moderately correlated. Interestingly, there is a north central state that has a low incidence of high cholestoral but a high rate of cancer. The large point size implies that this is an excessive amount of cancer deaths (40% or greater)
 
 ```{r warning= FALSE}
 FinalData %>% group_by(Region) %>% summarize(`average excess deaths`=mean(Avg_PercentExcess, na.rm=T)) %>%
@@ -189,7 +197,7 @@ FinalData %>% group_by(Region) %>% summarize(`average excess deaths`=mean(Avg_Pe
   ggtitle("Average Excess Deaths by Region") + theme_minimal() + theme(legend.position="none")
 ```
 
-##### This graph illustrates that the south has, on average, greater excess deaths than any other region. The northeastern region appears to have the lowest excess death percentage.  
+This graph illustrates that the south has, on average, greater excess deaths than any other region. The northeastern region appears to have the lowest excess death percentage.  
 
 ```{r warning = FALSE}
 ggplot(FinalData, aes(PercentExcess_HD,PercentExcess_Canc))+
@@ -214,9 +222,9 @@ scale_color_gradient(low="yellow", high="red")+
   ggtitle("Excess Heart Disease Deaths vs. Excess Stroke Deaths")
 ```
 
-##### The first graph displays a positive relationship between excess deaths due to heart disease, cancer, and stroke (color get increasingly redder as each axis increases). This can indicate that states experiencing higher mortality rates from one disease are likely to experience higher mortality rates in other diseases - that one disease is not primarily contributing to the excess death rates. The same graph was reproduced with the color representing the death levels. The states with HIGH excess death levels have high levels of both heart disease and cancer -- one is not a primary contributor to excess death levels. When stroke is represented on the y-axis, the results remain fairly consistent.
+The first graph displays a positive relationship between excess deaths due to heart disease, cancer, and stroke (color get increasingly redder as each axis increases). This can indicate that states experiencing higher mortality rates from one disease are likely to experience higher mortality rates in other diseases - that one disease is not primarily contributing to the excess death rates. The same graph was reproduced with the color representing the death levels. The states with HIGH excess death levels have high levels of both heart disease and cancer -- one is not a primary contributor to excess death levels. When stroke is represented on the y-axis, the results remain fairly consistent.
 
-## PCA
+#### PCA
 
 ```{r warning= FALSE}
 nums<-selectedVar%>%select_if(is.numeric)%>% round(2)%>%scale
@@ -226,7 +234,7 @@ names(DD_pca)
 summary(DD_pca, loadings = T)
 ```
 
-##### Unexpectedly, PC1 does not seem to be an overall health indicator. I assumed that with greater average percent excess death, there would be an increase in poor nutrition -- that there would be a strong correlation between excess deaths and diabetes. While PC1 does indicate some relationship between average percent excess death and diagnosed diabetes, other factors, such as high cholesterol and excess deaths due to cancer, are opposite in sign. PC2 seems to indicate that with increased diabetes diagnoses, excess deaths due to stroke and heart disease decrease. Basically, I can't really make sense of this and I thought this would be much more straightforward to interpret with all variables in PC1 having all the same sign at least but here we are! So it goes.
+Unexpectedly, PC1 does not seem to be an overall health indicator. I assumed that with greater average percent excess death, there would be an increase in poor nutrition -- that there would be a strong correlation between excess deaths and diabetes. While PC1 does indicate some relationship between average percent excess death and diagnosed diabetes, other factors, such as high cholesterol and excess deaths due to cancer, are opposite in sign. PC2 seems to indicate that with increased diabetes diagnoses, excess deaths due to stroke and heart disease decrease. Basically, I can't really make sense of this and I thought this would be much more straightforward to interpret with all variables in PC1 having all the same sign at least but here we are! So it goes.
 
 ```{r warning = FALSE}
 eigval<-DD_pca$sdev^2 #square to convert SDs to eigenvalues
@@ -237,22 +245,22 @@ ggplot()+geom_bar(aes(y=varprop,x=1:7),stat="identity")+xlab("")+geom_path(aes(y
  scale_x_continuous(breaks=1:10)
 ```
 
-##### Based on this plot, it is unclear how many variables to keep. The elbow is not distinct on this scree plot, but 1-2 PC could sufficiently capture the variance in the data.
+Based on this plot, it is unclear how many variables to keep. The elbow is not distinct on this scree plot, but 1-2 PC could sufficiently capture the variance in the data.
 
 ```{r}
 round(cumsum(eigval)/sum(eigval),2) 
 ```
 
-##### Using another rule of thumb, where the cumulative proportion of variance >80%, 5 PC would be kept.
+Using another rule of thumb, where the cumulative proportion of variance >80%, 5 PC would be kept.
 
 ``` {r}
 eigval
 ```
 
-##### Using Kaiser's rule, priciple components 1, 2, and 3 would be kept because their eigenvalues are >1. 
+Using Kaiser's rule, priciple components 1, 2, and 3 would be kept because their eigenvalues are >1. 
 
 ```{r warning=FALSE}
 ggplot()+geom_point(aes(DD_pca$scores[,1], DD_pca$scores[,2]))+xlab("PC1")+ylab("PC2")
 ```
 
-##### A beautiful plot of PC1 against PC2. Together, these two new variables account for ~50% of the variation in the data set.
+A beautiful plot of PC1 against PC2. Together, these two new variables account for ~50% of the variation in the data set.

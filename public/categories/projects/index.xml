@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RStudio on Bailee Dastugue</title>
-    <link>/categories/rstudio/</link>
-    <description>Recent content in RStudio on Bailee Dastugue</description>
+    <title>Projects on Bailee Dastugue</title>
+    <link>/categories/projects/</link>
+    <description>Recent content in Projects on Bailee Dastugue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Oct 2019 10:07:47 +0600</lastBuildDate>
     
-	<atom:link href="/categories/rstudio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -28,15 +28,6 @@ Emphasis Emphasis, aka italics, with asterisks or underscores.</description>
       
       <guid>/project1/</guid>
       <description>knitr::opts_chunk$set(echo = TRUE) library(knitr) opts_chunk$set(fig.align=&amp;quot;center&amp;quot;, fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE) About the Data Sets Both data sets were found on the Center for Disease Control website for the 2015 year.</description>
-    </item>
-    
-    <item>
-      <title>This is Project 2</title>
-      <link>/blog/post-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/post-2/</guid>
-      <description>For some reason, beyond my current understanding of natural law, there is an extreme over-representation of Dr.</description>
     </item>
     
   </channel>

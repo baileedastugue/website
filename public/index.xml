@@ -40,6 +40,15 @@ Emphasis Emphasis, aka italics, with asterisks or underscores.</description>
     </item>
     
     <item>
+      <title>Project One</title>
+      <link>/project1/</link>
+      <pubDate>Thu, 17 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>/project1/</guid>
+      <description>knitr::opts_chunk$set(echo = TRUE) library(knitr) opts_chunk$set(fig.align=&amp;quot;center&amp;quot;, fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE) About the Data Sets Both data sets were found on the Center for Disease Control website for the 2015 year.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>/about/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
