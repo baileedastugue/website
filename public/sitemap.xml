@@ -13,6 +13,16 @@
   </url>
   
   <url>
+    <loc>/about/about/</loc>
+    <lastmod>2019-10-29T13:49:23+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2019-10-29T13:49:23+06:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/</loc>
     <lastmod>2019-10-29T13:49:23+06:00</lastmod>
   </url>
@@ -75,14 +85,6 @@
   <url>
     <loc>/about/about/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/about/about/</loc>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
   </url>
   
   <url>

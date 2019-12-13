@@ -1,11 +1,13 @@
 ---
-date:
-description: this is meta description
+title: "About Me"
+date: 2019-10-29T13:49:23+06:00
 draft: false
-image: images/author.png
-title: About Me
-type: about/about
+image: "images/author.png"
+description: "this is meta description"
+type : "about"
 ---
+
+
 
 My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history. Whether it is because that is what my life has actually consisted of or because it’s what I, personally, find most interesting is beyond me. My bias towards biology pervades my biography. Above all, I’m interested in the human body – why it functions, why it fails, and how we can systemically improve our human condition through science.
 

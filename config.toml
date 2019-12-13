@@ -95,7 +95,8 @@ mobile = "Yikes"
 email = "bailee.dast@gmail.com"
 location = "Austin, Texas"
 number = 3
-
+# copyright
+copyright = "| @2019 [Themefisher](https://themefisher.com) All Rights Reserved |"
 
   # Preloader
   [params.preloader]

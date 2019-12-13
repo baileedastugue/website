@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>About Me</title>
+      <link>/about/about/</link>
+      <pubDate>Tue, 29 Oct 2019 13:49:23 +0600</pubDate>
+      
+      <guid>/about/about/</guid>
+      <description>My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
+    </item>
+    
+    <item>
       <title>Hey Dummy</title>
       <link>/blog/post-4/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
@@ -55,15 +64,6 @@ I&#39;m an inline-style link with title</description>
       
       <guid>/about/about/</guid>
       <description>About Me /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc.</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>/about/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/about/</guid>
-      <description>My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
     </item>
     
     <item>
