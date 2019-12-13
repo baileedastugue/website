@@ -6,47 +6,42 @@ output:
   html_document: default
   pdf_document: default
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 ```{r global_options, include=FALSE}
 library(knitr)
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE)
 ```
 
-## About the Data Sets
+#### About the Data Sets
 
-##### Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.
+Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.
 
-
-## Editing the Data Sets
+#### Editing the Data Sets
 ```{r warning= FALSE}
 library(ggplot2)
 library(tidyr)
 library(tidyverse)
-diabetes <- read.csv("~/diabetes.csv")
-COD <- read.csv("~/COD.csv")
+diabetes <- read.csv("~/Desktop/website/content/blog/Diabetes.csv")
+COD <- read.csv("~/Desktop/website/content/blog/ExcessDeaths.csv")
 COD_Canc <- COD %>% select(-HHS.Region) %>% filter(Age.Range == "0-49", Locality == "All", Benchmark == "Floating", Cause.of.Death == "Cancer")
 COD_HD <- COD %>% select(-HHS.Region) %>% filter(Age.Range == "0-49", Locality == "All", Benchmark == "Floating", Cause.of.Death == "Heart Disease")
 COD_St <- COD %>% select(-HHS.Region) %>% filter(Age.Range == "0-49", Locality == "All", Benchmark == "Floating", Cause.of.Death == "Stroke")
 ```
-##### I imported the two data sets from my home library and created three subsets on the basis of cause of death (COD): Cancer, Heart Disease, or Stroke. For each new data set, the age range was set at between 0-49, the location was set for the entire state, and the benchmark for estimating expected number of deaths was set to a floating estimate. This was done to make the data easier to work with.
-
+I imported the two data sets from my home library and created three subsets on the basis of cause of death (COD): Cancer, Heart Disease, or Stroke. For each new data set, the age range was set at between 0-49, the location was set for the entire state, and the benchmark for estimating expected number of deaths was set to a floating estimate. This was done to make the data easier to work with.
 ```{r warning= FALSE}
 diabetes <- diabetes %>% select(-YearEnd,-DataSource,-Topic, -Response, -DataValueFootnoteSymbol, -LowConfidenceLimit, -HighConfidenceLimit, -StratificationCategory1, -Stratification1, -StratificationCategory2, -Stratification2, -StratificationCategory3, -Stratification3, -GeoLocation, -ResponseID, -LocationID, -TopicID, -QuestionID)
 diabetes <- diabetes %>% select(-DataValueAlt, -DatavalueFootnote, -DataValueTypeID, -StratificationCategoryID1, -StratificationID1, -StratificationCategoryID2, -StratificationID2, -StratificationCategoryID3, -StratificationID3)
 diabetes <- diabetes %>% select(-DataValueUnit)
 ```
-##### In this code, I refined the diabetes dataset to variables I thought were interesting by removing the ones I did not want to work with using selct(). More complete analysis could be performed if these removed variables were added back. 
-
+In this code, I refined the diabetes dataset to variables I thought were interesting by removing the ones I did not want to work with using selct(). More complete analysis could be performed if these removed variables were added back.
 ```{r warning= FALSE}
 diabetes1 <- diabetes %>% select(LocationDesc, Question, DataValue)
 #diabetes1 %>% pivot_wider(names_from = Question, values_from = DataValue) 
 diabetes1 <- diabetes1 %>% reshape(idvar = "LocationDesc", timevar = "Question", direction = "wide")
 ```
-##### By using the select() and reshape() to wider function, the data became tidy. The state provided the unique identification and the values under the 'Question' column became the new columns. Each question was moved to its own column and the rows were filled with the corresponding values. Ultimately, each state has its own singular row without duplicates.
+By using the select() and reshape() to wider function, the data became tidy. The state provided the unique identification and the values under the 'Question' column became the new columns. Each question was moved to its own column and the rows were filled with the corresponding values. Ultimately, each state has its own singular row without duplicates.
 
 ```{r warning= FALSE}
 diabetes2 <- diabetes1 %>% select(-`DataValue.Dilated eye examination among adults aged >= 18 years with diagnosed diabetes`, -`DataValue.Foot examination among adults aged >= 18 years with diagnosed diabetes`, -`DataValue.Influenza vaccination among noninstitutionalized adults aged 18-64 years with diagnosed diabetes`, -`DataValue.Influenza vaccination among noninstitutionalized adults aged >= 65 years with diagnosed diabetes`, -`DataValue.Pneumococcal vaccination among noninstitutionalized adults aged >= 65 years with diagnosed diabetes`, -`DataValue.Influenza vaccination among noninstitutionalized adults aged 18-64 years with diagnosed diabetes`, -`DataValue.Pneumococcal vaccination among noninstitutionalized adults aged 18-64 years with diagnosed diabetes`)
