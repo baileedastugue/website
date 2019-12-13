@@ -8,7 +8,7 @@ draft: false
 image: 
 tags:
 # post type
-type: "featured"
+
 
 title: Project One
 ---
@@ -354,9 +354,7 @@ selectedVar%&gt;%cor</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.</li>
 </ol>
-</div>
-<div id="graphs" class="section level3">
-<h3>Graphs</h3>
+<p>###Graphs</p>
 <pre class="r"><code>ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat=&quot;summary&quot;,fun.y=&quot;mean&quot;, position=&quot;dodge&quot;)+
   geom_errorbar(stat=&quot;summary&quot;,position=&quot;dodge&quot;) + xlab(&quot;Region of the U.S.&quot;) +
@@ -399,6 +397,7 @@ scale_color_gradient(low=&quot;yellow&quot;, high=&quot;red&quot;)+
   ggtitle(&quot;Excess Heart Disease Deaths vs. Excess Stroke Deaths&quot;)</code></pre>
 <p><img src="/Project1_files/figure-html/unnamed-chunk-23-3.png" width="768" style="display: block; margin: auto;" /></p>
 <p>The first graph displays a positive relationship between excess deaths due to heart disease, cancer, and stroke (color get increasingly redder as each axis increases). This can indicate that states experiencing higher mortality rates from one disease are likely to experience higher mortality rates in other diseases - that one disease is not primarily contributing to the excess death rates. The same graph was reproduced with the color representing the death levels. The states with HIGH excess death levels have high levels of both heart disease and cancer – one is not a primary contributor to excess death levels. When stroke is represented on the y-axis, the results remain fairly consistent.</p>
+</div>
 <div id="pca" class="section level4">
 <h4>PCA</h4>
 <pre class="r"><code>nums&lt;-selectedVar%&gt;%select_if(is.numeric)%&gt;% round(2)%&gt;%scale
@@ -447,5 +446,4 @@ ggplot()+geom_bar(aes(y=varprop,x=1:7),stat=&quot;identity&quot;)+xlab(&quot;&qu
 <pre class="r"><code>ggplot()+geom_point(aes(DD_pca$scores[,1], DD_pca$scores[,2]))+xlab(&quot;PC1&quot;)+ylab(&quot;PC2&quot;)</code></pre>
 <p><img src="/Project1_files/figure-html/unnamed-chunk-28-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>A beautiful plot of PC1 against PC2. Together, these two new variables account for ~50% of the variation in the data set.</p>
-</div>
 </div>

@@ -8,7 +8,7 @@ draft: false
 image: 
 tags:
 # post type
-type: "featured"
+
 
 title: Project One
 ---
@@ -165,7 +165,7 @@ FinalData %>% group_by(Region) %>% summarize(mean_ExcessHD=mean(PercentExcess_HD
 
 10. This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.
 
-### Graphs
+###Graphs
 ```{r warning=FALSE}
 ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat="summary",fun.y="mean", position="dodge")+
