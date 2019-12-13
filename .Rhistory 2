@@ -1,0 +1,42 @@
+install.packages("blogdown")
+blogdown::install_hugo()
+blogdown::new_site(theme="themefisher/liva-hugo", theme_example = T)
+knitr::opts_chunk$set(collapse = TRUE)
+blogdown::serve_site()
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+cardio <- read_excel("~/desktop/cardio.xlsx")
+cardio <- read_excel("~/desktop/cardio.xlsx")
+cardio <- read_excel("~/desktop/cardio.xlsx")
+library(readxl)
+cardio <- read_excel("~/Desktop/cardio.xlsx")
+View(cardio)
+cardio <- read_excel("~/Desktop/cardio.xlsx")
+cardio <- read_excel("~/Desktop/cardio.xlsx")
+blogdown::new_site(theme="themefisher/liva-hugo", theme_example = T)
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document (go ahead and try it if you want: you can always reknit it later after making changes). You can embed an R code chunk like this:
+---------------------------------------------
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document (go ahead and try it if you want: you can always reknit it later after making changes). You can embed an R code chunk like this:
+---
+categories:
+- Help
+date: "2019-10-29T10:07:47+06:00"
+description: this is meta description
+draft: false
+image: images/Coffee.jpeg
+tags:
+title: Bailee is desperately trying
+---
+[Link to worksheet 1](/WS1)
+---
+categories:
+- Help
+date: "2019-10-29T10:07:47+06:00"
+description: this is meta description
+draft: false
+image: images/Coffee.jpeg
+tags:
+## R Markdown
+Much of the work in this class will be done via R Markdown documents. R Markdown documents combine text (with easy formatting opens including typesetting equations), R code, and R output including figures. They are a great way to produce self-contained, reprodudicble, well-documented statistical analyses
+In this first .Rmd worksheet, you will learn how to do some basic markdown editing. After you have made changes to the document, press "Knit HTML" in R Studio and see what results you get (it will complain if you do something wrong; troubleshooting is part of life)!
+blogdown::serve_site()
