@@ -3,7 +3,7 @@ categories:
 - RStudio
 description: this is meta description
 draft: false
-image: images/featured-post/heart-1.png
+image: images/featured-post/heart-2.jpeg
 tags:
 - RSudio
 - New
