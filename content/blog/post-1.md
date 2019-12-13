@@ -7,7 +7,7 @@ description: this is meta description
 draft: false
 image: 
 tags:
-type: "featured"
+
 title: Project I: Cause of Death + Diabetes
 ---
 
