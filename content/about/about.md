@@ -4,7 +4,7 @@ date: 2019-10-29T13:49:23+06:00
 draft: false
 image: "images/author.png"
 description: "this is meta description"
-type : "about"
+type : "about/about"
 ---
 
 

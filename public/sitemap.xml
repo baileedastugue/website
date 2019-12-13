@@ -48,12 +48,12 @@
   </url>
   
   <url>
-    <loc>/tags/rstudio/</loc>
+    <loc>/categories/rstudio/</loc>
     <lastmod>2019-10-29T10:07:47+06:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/rstudio/</loc>
+    <loc>/tags/rstudio/</loc>
     <lastmod>2019-10-29T10:07:47+06:00</lastmod>
   </url>
   
@@ -88,7 +88,15 @@
   </url>
   
   <url>
+    <loc>/blog/post-2/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/new/</loc>
+  </url>
+  
+  <url>
+    <loc>/blog/baileewallis_project2/</loc>
   </url>
   
   <url>
@@ -97,10 +105,6 @@
   
   <url>
     <loc>/blog/post-1/</loc>
-  </url>
-  
-  <url>
-    <loc>/blog/post-2/</loc>
   </url>
   
 </urlset>
