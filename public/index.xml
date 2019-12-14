@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>Another Post</title>
+      <link>/blog/post-5/</link>
+      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      
+      <guid>/blog/post-5/</guid>
+      <description>library(readr) lexi &amp;lt;- read_csv(&amp;quot;~/desktop/website/content/blog/lexi.csv&amp;quot;) ## Parsed with column specification: ## cols( ## Word = col_character(), ## connotation = col_character() ## ) library(reticulate) library(dplyr) ## ## Attaching package: &amp;#39;dplyr&amp;#39; ## The following objects are masked from &amp;#39;package:stats&amp;#39;: ## ## filter, lag ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## intersect, setdiff, setequal, union library(tidyr) library(tidyverse) ## ── Attaching packages ───────────────────────────────────────── tidyverse 1.</description>
+    </item>
+    
+    <item>
       <title>Hey Dummy</title>
       <link>/blog/post-4/</link>
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/blog/post-4/</guid>
-      <description>knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document.</description>
+      <description>knitr::opts_chunk$set(echo = TRUE) When I was younger, I was genuinely obsessed with the Harry Potter series.</description>
     </item>
     
     <item>
@@ -35,8 +44,7 @@
       <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
       
       <guid>/blog/post-3/</guid>
-      <description>About the Data Sets Link I&#39;m an inline-style link
-I&#39;m an inline-style link with title</description>
+      <description>five=2+r.cat r.american ## &amp;quot;Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much.</description>
     </item>
     
     <item>
@@ -63,7 +71,8 @@ I&#39;m an inline-style link with title</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/about/</guid>
-      <description>My name is Bailee Dastugue (formerly Wallis). Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
+      <description>My name is Bailee Dastugue (formerly Wallis).
+Any ‘about me’ is typically hyper-focused on an all-too revealing medical history.</description>
     </item>
     
     <item>

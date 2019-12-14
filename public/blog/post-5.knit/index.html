@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <title>Bailee Dastugue</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="this is meta description">
+  <meta name="author" content="Bailee Dastugue">
+  <meta name="generator" content="Hugo 0.60.1" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="/images/favicon.png " type="image/x-icon">
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom">
+      <a class="navbar-brand mobile-view" href="/"><img class="img-fluid"
+          src="/images/coffee.png" alt="Bailee Dastugue"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-facebook"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-twitter-alt"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-instagram"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="ti-github"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href=""><i class=""></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="/"><img class="img-fluid"
+            src="/images/coffee.png" alt="Bailee Dastugue"></a>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"> Home </a>
+          </li>
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/about">About</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">Post</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search px-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="//search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+        <a href="/categories/web-design"
+          class="text-primary">Web design</a>
+        
+        <h2>Another Post</h2>
+        <div class="mb-3">
+          <span>By Bailee Dastugue</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>29 October 2019</span>
+          
+        </div>
+        
+        <div class="content mb-5">
+          <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(readr)
+lexi <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">~/desktop/website/content/blog/lexi.csv&#34;</span>)
+</code></pre></div><pre><code>## Parsed with column specification:
+## cols(
+##   Word = col_character(),
+##   connotation = col_character()
+## )
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(reticulate)
+<span style="color:#a6e22e">library</span>(dplyr)
+</code></pre></div><pre><code>## 
+## Attaching package: 'dplyr'
+</code></pre><pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+</code></pre><pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyr)
+<span style="color:#a6e22e">library</span>(tidyverse)
+</code></pre></div><pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──
+</code></pre><pre><code>## ✔ ggplot2 3.2.1     ✔ stringr 1.4.0
+## ✔ tibble  2.1.3     ✔ forcats 0.4.0
+## ✔ purrr   0.3.3
+</code></pre><pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lexi
+</code></pre></div><pre><code>## # A tibble: 93,874 x 2
+##    Word                connotation
+##    &lt;chr&gt;               &lt;chr&gt;      
+##  1 a-ok_adjective      neutral    
+##  2 a-okay_adjective    neutral    
+##  3 a-one_adjective     positive   
+##  4 a_adjective         neutral    
+##  5 a_noun              neutral    
+##  6 aa_noun             neutral    
+##  7 aaa_noun            negative   
+##  8 aaa_propernoun      positive   
+##  9 aaah_propernoun     positive   
+## 10 aaarated_propernoun positive   
+## # … with 93,864 more rows
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lexi1 <span style="color:#f92672">&lt;-</span> lexi <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">rename</span>(word <span style="color:#f92672">=</span> Word) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">rename</span>(conn <span style="color:#f92672">=</span> connotation) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">glimpse</span>()
+</code></pre></div><pre><code>## Observations: 93,874
+## Variables: 2
+## $ word &lt;chr&gt; &quot;a-ok_adjective&quot;, &quot;a-okay_adjective&quot;, &quot;a-one_adjective&quot;, &quot;a…
+## $ conn &lt;chr&gt; &quot;neutral&quot;, &quot;neutral&quot;, &quot;positive&quot;, &quot;neutral&quot;, &quot;neutral&quot;, &quot;ne…
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lexi2 <span style="color:#f92672">&lt;-</span> lexi1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">separate</span>(word, into <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">word&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">type&#34;</span>), sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">_&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate_if</span>(is.character, as.factor) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">glimpse</span>()
+</code></pre></div><pre><code>## Observations: 93,874
+## Variables: 3
+## $ word &lt;fct&gt; a-ok, a-okay, a-one, a, a, aa, aaa, aaa, aaah, aaarated, aa…
+## $ type &lt;fct&gt; adjective, adjective, adjective, adjective, noun, noun, nou…
+## $ conn &lt;fct&gt; neutral, neutral, positive, neutral, neutral, neutral, nega…
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">shabop <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste</span>(<span style="color:#a6e22e">read_lines</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">shabop.txt&#34;</span>), collapse <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> &#34;</span>)
+shabop
+</code></pre></div><pre><code>## [1] &quot;Our story beings on a Sunday afternoons Just between Halfway Tree and Spanish Town Where a young boy, not yet the cock of the walk He would soon become, was lying on the grass And taking in the sweet and sensuous scent of Hibiscus That languidly lilted along the summer breeze It was at this precise moment that he saw her Her walk was soft and delicate With a thaumaturgical touch that only a Rabbi's daughter could have Before their eyes had even met Her luminous lips had already lured him in Salvation winked with the promise of a Bris held at pinnacle And a congregation of sages bunny hopping and chicken dancing to Yiddish Mento Then their eyes linked, an eon blinked Amharic vows were screed upon their hearts Just to think, this could all be with the frenectomy and a few words of love  My Shabop Shalom baby Won't you Shabop Shalom with me Under the old banana tree? My sweet Telavivian lambs bread My heart can act as an emollient And you'll never, ever say, \&quot;Get bent\&quot;, no, no, oh Todamamatodamama Todamamatodamama, da, da, da, da Todamamatodamama Todamamatodamama, da, da, da, da  All the signals that I'm sending I'll keep sending them and on the constanttillionth time I'll make you mine (Yes, I swear I will) Your sweet supple breasts are golden ghettos Soft statues in stilettos Two wise men instead of three When I'm in a foul mood I gotta' see you in your Talmud And so happy it makes me You wanna know who, who wrote the Book of Job? She wants to know Who, who wrote the Dead Sea Scrolls? Well, I did, I did Yes, yes, I did, I did I did, I did, I did, I did Hexakosioihexekontahexaphobia Can be a fun ordeal I swear by Solomon's seal Honey, when it comes to love There's a fire in the deep end of my heart Giving me the Heebie-Jeebies You see, I know the land of wood and waters Merely fodder for loves slaughter And darling, I've watched you cake-walk To the immaculate conception for far too long I'm livicated to you, yes Ahava Raba, Ahava Raba for you We're in Heaven, we're in Heaven, it's true I'm ascending, I'm ascending tonight with you&quot;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> re
+shabop2 <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">[.—,;</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">)()?-]</span><span style="color:#e6db74">&#34;</span>,<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>,r<span style="color:#f92672">.</span>shabop)
+<span style="color:#66d9ef">print</span>(shabop2)
+</code></pre></div><pre><code>## Our story beings on a Sunday afternoons Just between Halfway Tree and Spanish Town Where a young boy not yet the cock of the walk He would soon become was lying on the grass And taking in the sweet and sensuous scent of Hibiscus That languidly lilted along the summer breeze It was at this precise moment that he saw her Her walk was soft and delicate With a thaumaturgical touch that only a Rabbis daughter could have Before their eyes had even met Her luminous lips had already lured him in Salvation winked with the promise of a Bris held at pinnacle And a congregation of sages bunny hopping and chicken dancing to Yiddish Mento Then their eyes linked an eon blinked Amharic vows were screed upon their hearts Just to think this could all be with the frenectomy and a few words of love  My Shabop Shalom baby Wont you Shabop Shalom with me Under the old banana tree My sweet Telavivian lambs bread My heart can act as an emollient And youll never ever say Get bent no no oh Todamamatodamama Todamamatodamama da da da da Todamamatodamama Todamamatodamama da da da da  All the signals that Im sending Ill keep sending them and on the constanttillionth time Ill make you mine Yes I swear I will Your sweet supple breasts are golden ghettos Soft statues in stilettos Two wise men instead of three When Im in a foul mood I gotta see you in your Talmud And so happy it makes me You wanna know who who wrote the Book of Job She wants to know Who who wrote the Dead Sea Scrolls Well I did I did Yes yes I did I did I did I did I did I did Hexakosioihexekontahexaphobia Can be a fun ordeal I swear by Solomons seal Honey when it comes to love Theres a fire in the deep end of my heart Giving me the HeebieJeebies You see I know the land of wood and waters Merely fodder for loves slaughter And darling Ive watched you cakewalk To the immaculate conception for far too long Im livicated to you yes Ahava Raba Ahava Raba for you Were in Heaven were in Heaven its true Im ascending Im ascending tonight with you
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">shabop3 <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>split(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> +</span><span style="color:#e6db74">&#34;</span>, shabop2)
+lower_list<span style="color:#f92672">=</span>[] <span style="color:#75715e">#empty list</span>
+<span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> shabop3:
+  temp <span style="color:#f92672">=</span> word<span style="color:#f92672">.</span>lower()
+  lower_list<span style="color:#f92672">.</span>append(temp)
+<span style="color:#66d9ef">print</span>(lower_list)
+</code></pre></div><pre><code>## ['our', 'story', 'beings', 'on', 'a', 'sunday', 'afternoons', 'just', 'between', 'halfway', 'tree', 'and', 'spanish', 'town', 'where', 'a', 'young', 'boy', 'not', 'yet', 'the', 'cock', 'of', 'the', 'walk', 'he', 'would', 'soon', 'become', 'was', 'lying', 'on', 'the', 'grass', 'and', 'taking', 'in', 'the', 'sweet', 'and', 'sensuous', 'scent', 'of', 'hibiscus', 'that', 'languidly', 'lilted', 'along', 'the', 'summer', 'breeze', 'it', 'was', 'at', 'this', 'precise', 'moment', 'that', 'he', 'saw', 'her', 'her', 'walk', 'was', 'soft', 'and', 'delicate', 'with', 'a', 'thaumaturgical', 'touch', 'that', 'only', 'a', 'rabbis', 'daughter', 'could', 'have', 'before', 'their', 'eyes', 'had', 'even', 'met', 'her', 'luminous', 'lips', 'had', 'already', 'lured', 'him', 'in', 'salvation', 'winked', 'with', 'the', 'promise', 'of', 'a', 'bris', 'held', 'at', 'pinnacle', 'and', 'a', 'congregation', 'of', 'sages', 'bunny', 'hopping', 'and', 'chicken', 'dancing', 'to', 'yiddish', 'mento', 'then', 'their', 'eyes', 'linked', 'an', 'eon', 'blinked', 'amharic', 'vows', 'were', 'screed', 'upon', 'their', 'hearts', 'just', 'to', 'think', 'this', 'could', 'all', 'be', 'with', 'the', 'frenectomy', 'and', 'a', 'few', 'words', 'of', 'love', 'my', 'shabop', 'shalom', 'baby', 'wont', 'you', 'shabop', 'shalom', 'with', 'me', 'under', 'the', 'old', 'banana', 'tree', 'my', 'sweet', 'telavivian', 'lambs', 'bread', 'my', 'heart', 'can', 'act', 'as', 'an', 'emollient', 'and', 'youll', 'never', 'ever', 'say', 'get', 'bent', 'no', 'no', 'oh', 'todamamatodamama', 'todamamatodamama', 'da', 'da', 'da', 'da', 'todamamatodamama', 'todamamatodamama', 'da', 'da', 'da', 'da', 'all', 'the', 'signals', 'that', 'im', 'sending', 'ill', 'keep', 'sending', 'them', 'and', 'on', 'the', 'constanttillionth', 'time', 'ill', 'make', 'you', 'mine', 'yes', 'i', 'swear', 'i', 'will', 'your', 'sweet', 'supple', 'breasts', 'are', 'golden', 'ghettos', 'soft', 'statues', 'in', 'stilettos', 'two', 'wise', 'men', 'instead', 'of', 'three', 'when', 'im', 'in', 'a', 'foul', 'mood', 'i', 'gotta', 'see', 'you', 'in', 'your', 'talmud', 'and', 'so', 'happy', 'it', 'makes', 'me', 'you', 'wanna', 'know', 'who', 'who', 'wrote', 'the', 'book', 'of', 'job', 'she', 'wants', 'to', 'know', 'who', 'who', 'wrote', 'the', 'dead', 'sea', 'scrolls', 'well', 'i', 'did', 'i', 'did', 'yes', 'yes', 'i', 'did', 'i', 'did', 'i', 'did', 'i', 'did', 'i', 'did', 'i', 'did', 'hexakosioihexekontahexaphobia', 'can', 'be', 'a', 'fun', 'ordeal', 'i', 'swear', 'by', 'solomons', 'seal', 'honey', 'when', 'it', 'comes', 'to', 'love', 'theres', 'a', 'fire', 'in', 'the', 'deep', 'end', 'of', 'my', 'heart', 'giving', 'me', 'the', 'heebiejeebies', 'you', 'see', 'i', 'know', 'the', 'land', 'of', 'wood', 'and', 'waters', 'merely', 'fodder', 'for', 'loves', 'slaughter', 'and', 'darling', 'ive', 'watched', 'you', 'cakewalk', 'to', 'the', 'immaculate', 'conception', 'for', 'far', 'too', 'long', 'im', 'livicated', 'to', 'you', 'yes', 'ahava', 'raba', 'ahava', 'raba', 'for', 'you', 'were', 'in', 'heaven', 'were', 'in', 'heaven', 'its', 'true', 'im', 'ascending', 'im', 'ascending', 'tonight', 'with', 'you']
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">counts <span style="color:#f92672">=</span> {}
+<span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> lower_list:
+    <span style="color:#66d9ef">if</span> c <span style="color:#f92672">in</span> counts:
+        counts[c]<span style="color:#f92672">+</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span>:
+        counts[c]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> counts:
+   <span style="color:#66d9ef">print</span> (c, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">appears</span><span style="color:#e6db74">&#39;</span>, counts[c],<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">times</span><span style="color:#e6db74">&#34;</span>)
+</code></pre></div><pre><code>## ('precise', 'appears', 1, 'times')
+## ('summer', 'appears', 1, 'times')
+## ('all', 'appears', 2, 'times')
+## ('just', 'appears', 2, 'times')
+## ('bris', 'appears', 1, 'times')
+## ('soon', 'appears', 1, 'times')
+## ('foul', 'appears', 1, 'times')
+## ('held', 'appears', 1, 'times')
+## ('touch', 'appears', 1, 'times')
+## ('statues', 'appears', 1, 'times')
+## ('chicken', 'appears', 1, 'times')
+## ('yet', 'appears', 1, 'times')
+## ('halfway', 'appears', 1, 'times')
+## ('true', 'appears', 1, 'times')
+## ('had', 'appears', 2, 'times')
+## ('young', 'appears', 1, 'times')
+## ('signals', 'appears', 1, 'times')
+## ('to', 'appears', 6, 'times')
+## ('only', 'appears', 1, 'times')
+## ('lured', 'appears', 1, 'times')
+## ('under', 'appears', 1, 'times')
+## ('then', 'appears', 1, 'times')
+## ('them', 'appears', 1, 'times')
+## ('get', 'appears', 1, 'times')
+## ('far', 'appears', 1, 'times')
+## ('happy', 'appears', 1, 'times')
+## ('da', 'appears', 8, 'times')
+## ('me', 'appears', 3, 'times')
+## ('congregation', 'appears', 1, 'times')
+## ('know', 'appears', 3, 'times')
+## ('words', 'appears', 1, 'times')
+## ('not', 'appears', 1, 'times')
+## ('conception', 'appears', 1, 'times')
+## ('him', 'appears', 1, 'times')
+## ('bread', 'appears', 1, 'times')
+## ('wont', 'appears', 1, 'times')
+## ('heaven', 'appears', 2, 'times')
+## ('pinnacle', 'appears', 1, 'times')
+## ('ill', 'appears', 2, 'times')
+## ('did', 'appears', 8, 'times')
+## ('ever', 'appears', 1, 'times')
+## ('sages', 'appears', 1, 'times')
+## ('shabop', 'appears', 2, 'times')
+## ('watched', 'appears', 1, 'times')
+## ('she', 'appears', 1, 'times')
+## ('become', 'appears', 1, 'times')
+## ('where', 'appears', 1, 'times')
+## ('wrote', 'appears', 2, 'times')
+## ('old', 'appears', 1, 'times')
+## ('winked', 'appears', 1, 'times')
+## ('dead', 'appears', 1, 'times')
+## ('amharic', 'appears', 1, 'times')
+## ('lips', 'appears', 1, 'times')
+## ('yiddish', 'appears', 1, 'times')
+## ('sea', 'appears', 1, 'times')
+## ('seal', 'appears', 1, 'times')
+## ('our', 'appears', 1, 'times')
+## ('luminous', 'appears', 1, 'times')
+## ('yes', 'appears', 4, 'times')
+## ('hibiscus', 'appears', 1, 'times')
+## ('mood', 'appears', 1, 'times')
+## ('for', 'appears', 3, 'times')
+## ('mine', 'appears', 1, 'times')
+## ('its', 'appears', 1, 'times')
+## ('between', 'appears', 1, 'times')
+## ('frenectomy', 'appears', 1, 'times')
+## ('before', 'appears', 1, 'times')
+## ('youll', 'appears', 1, 'times')
+## ('screed', 'appears', 1, 'times')
+## ('be', 'appears', 2, 'times')
+## ('men', 'appears', 1, 'times')
+## ('scrolls', 'appears', 1, 'times')
+## ('vows', 'appears', 1, 'times')
+## ('never', 'appears', 1, 'times')
+## ('slaughter', 'appears', 1, 'times')
+## ('ascending', 'appears', 2, 'times')
+## ('met', 'appears', 1, 'times')
+## ('blinked', 'appears', 1, 'times')
+## ('along', 'appears', 1, 'times')
+## ('by', 'appears', 1, 'times')
+## ('cakewalk', 'appears', 1, 'times')
+## ('todamamatodamama', 'appears', 4, 'times')
+## ('boy', 'appears', 1, 'times')
+## ('daughter', 'appears', 1, 'times')
+## ('her', 'appears', 3, 'times')
+## ('oh', 'appears', 1, 'times')
+## ('livicated', 'appears', 1, 'times')
+## ('of', 'appears', 9, 'times')
+## ('could', 'appears', 2, 'times')
+## ('ordeal', 'appears', 1, 'times')
+## ('job', 'appears', 1, 'times')
+## ('keep', 'appears', 1, 'times')
+## ('swear', 'appears', 2, 'times')
+## ('telavivian', 'appears', 1, 'times')
+## ('constanttillionth', 'appears', 1, 'times')
+## ('theres', 'appears', 1, 'times')
+## ('salvation', 'appears', 1, 'times')
+## ('think', 'appears', 1, 'times')
+## ('comes', 'appears', 1, 'times')
+## ('golden', 'appears', 1, 'times')
+## ('already', 'appears', 1, 'times')
+## ('love', 'appears', 2, 'times')
+## ('heart', 'appears', 2, 'times')
+## ('sweet', 'appears', 3, 'times')
+## ('merely', 'appears', 1, 'times')
+## ('walk', 'appears', 2, 'times')
+## ('beings', 'appears', 1, 'times')
+## ('promise', 'appears', 1, 'times')
+## ('spanish', 'appears', 1, 'times')
+## ('supple', 'appears', 1, 'times')
+## ('scent', 'appears', 1, 'times')
+## ('your', 'appears', 2, 'times')
+## ('hexakosioihexekontahexaphobia', 'appears', 1, 'times')
+## ('raba', 'appears', 2, 'times')
+## ('story', 'appears', 1, 'times')
+## ('three', 'appears', 1, 'times')
+## ('would', 'appears', 1, 'times')
+## ('few', 'appears', 1, 'times')
+## ('darling', 'appears', 1, 'times')
+## ('two', 'appears', 1, 'times')
+## ('long', 'appears', 1, 'times')
+## ('their', 'appears', 3, 'times')
+## ('wood', 'appears', 1, 'times')
+## ('too', 'appears', 1, 'times')
+## ('was', 'appears', 3, 'times')
+## ('banana', 'appears', 1, 'times')
+## ('immaculate', 'appears', 1, 'times')
+## ('ghettos', 'appears', 1, 'times')
+## ('wants', 'appears', 1, 'times')
+## ('eyes', 'appears', 2, 'times')
+## ('wanna', 'appears', 1, 'times')
+## ('that', 'appears', 4, 'times')
+## ('fire', 'appears', 1, 'times')
+## ('heebiejeebies', 'appears', 1, 'times')
+## ('lilted', 'appears', 1, 'times')
+## ('languidly', 'appears', 1, 'times')
+## ('it', 'appears', 3, 'times')
+## ('rabbis', 'appears', 1, 'times')
+## ('baby', 'appears', 1, 'times')
+## ('with', 'appears', 5, 'times')
+## ('he', 'appears', 2, 'times')
+## ('town', 'appears', 1, 'times')
+## ('tonight', 'appears', 1, 'times')
+## ('wise', 'appears', 1, 'times')
+## ('this', 'appears', 2, 'times')
+## ('gotta', 'appears', 1, 'times')
+## ('tree', 'appears', 2, 'times')
+## ('say', 'appears', 1, 'times')
+## ('will', 'appears', 1, 'times')
+## ('i', 'appears', 13, 'times')
+## ('can', 'appears', 2, 'times')
+## ('loves', 'appears', 1, 'times')
+## ('were', 'appears', 3, 'times')
+## ('fun', 'appears', 1, 'times')
+## ('grass', 'appears', 1, 'times')
+## ('cock', 'appears', 1, 'times')
+## ('taking', 'appears', 1, 'times')
+## ('are', 'appears', 1, 'times')
+## ('and', 'appears', 12, 'times')
+## ('soft', 'appears', 2, 'times')
+## ('bent', 'appears', 1, 'times')
+## ('ahava', 'appears', 2, 'times')
+## ('afternoons', 'appears', 1, 'times')
+## ('deep', 'appears', 1, 'times')
+## ('an', 'appears', 2, 'times')
+## ('honey', 'appears', 1, 'times')
+## ('as', 'appears', 1, 'times')
+## ('im', 'appears', 5, 'times')
+## ('at', 'appears', 2, 'times')
+## ('have', 'appears', 1, 'times')
+## ('in', 'appears', 8, 'times')
+## ('my', 'appears', 4, 'times')
+## ('lambs', 'appears', 1, 'times')
+## ('saw', 'appears', 1, 'times')
+## ('linked', 'appears', 1, 'times')
+## ('talmud', 'appears', 1, 'times')
+## ('end', 'appears', 1, 'times')
+## ('dancing', 'appears', 1, 'times')
+## ('make', 'appears', 1, 'times')
+## ('sending', 'appears', 2, 'times')
+## ('when', 'appears', 2, 'times')
+## ('ive', 'appears', 1, 'times')
+## ('who', 'appears', 4, 'times')
+## ('sunday', 'appears', 1, 'times')
+## ('book', 'appears', 1, 'times')
+## ('stilettos', 'appears', 1, 'times')
+## ('thaumaturgical', 'appears', 1, 'times')
+## ('emollient', 'appears', 1, 'times')
+## ('instead', 'appears', 1, 'times')
+## ('you', 'appears', 9, 'times')
+## ('bunny', 'appears', 1, 'times')
+## ('even', 'appears', 1, 'times')
+## ('fodder', 'appears', 1, 'times')
+## ('see', 'appears', 2, 'times')
+## ('waters', 'appears', 1, 'times')
+## ('act', 'appears', 1, 'times')
+## ('upon', 'appears', 1, 'times')
+## ('breasts', 'appears', 1, 'times')
+## ('sensuous', 'appears', 1, 'times')
+## ('moment', 'appears', 1, 'times')
+## ('delicate', 'appears', 1, 'times')
+## ('on', 'appears', 3, 'times')
+## ('a', 'appears', 10, 'times')
+## ('land', 'appears', 1, 'times')
+## ('solomons', 'appears', 1, 'times')
+## ('hopping', 'appears', 1, 'times')
+## ('shalom', 'appears', 2, 'times')
+## ('makes', 'appears', 1, 'times')
+## ('no', 'appears', 2, 'times')
+## ('well', 'appears', 1, 'times')
+## ('eon', 'appears', 1, 'times')
+## ('mento', 'appears', 1, 'times')
+## ('giving', 'appears', 1, 'times')
+## ('breeze', 'appears', 1, 'times')
+## ('so', 'appears', 1, 'times')
+## ('time', 'appears', 1, 'times')
+## ('hearts', 'appears', 1, 'times')
+## ('the', 'appears', 16, 'times')
+## ('lying', 'appears', 1, 'times')
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">list <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> counts:
+   new <span style="color:#f92672">=</span> (c, counts[c])
+   list<span style="color:#f92672">.</span>append(new)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">times <span style="color:#f92672">&lt;-</span> py<span style="color:#f92672">$</span>list <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select_if</span>(is.integer) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">pivot_longer</span>(<span style="color:#a6e22e">contains</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">X&#34;</span>)), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">name&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">times&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(id <span style="color:#f92672">=</span> <span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>name)
+times
+</code></pre></div><pre><code>## # A tibble: 219 x 2
+##    times    id
+##    &lt;int&gt; &lt;int&gt;
+##  1     1     1
+##  2     1     2
+##  3     2     3
+##  4     2     4
+##  5     1     5
+##  6     1     6
+##  7     1     7
+##  8     1     8
+##  9     1     9
+## 10     1    10
+## # … with 209 more rows
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">words <span style="color:#f92672">&lt;-</span> py<span style="color:#f92672">$</span>list <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select_if</span>(is.factor) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">pivot_longer</span>(<span style="color:#a6e22e">contains</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">X&#34;</span>)), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">name&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">word&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(id <span style="color:#f92672">=</span> <span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>name)
+words
+</code></pre></div><pre><code>## # A tibble: 219 x 2
+##    word       id
+##    &lt;fct&gt;   &lt;int&gt;
+##  1 precise     1
+##  2 summer      2
+##  3 all         3
+##  4 just        4
+##  5 bris        5
+##  6 soon        6
+##  7 foul        7
+##  8 held        8
+##  9 touch       9
+## 10 statues    10
+## # … with 209 more rows
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">full <span style="color:#f92672">&lt;-</span> words <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">left_join</span>(times) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>id)
+</code></pre></div><pre><code>## Joining, by = &quot;id&quot;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">full <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">left_join</span>(lexi2)
+</code></pre></div><pre><code>## Joining, by = &quot;word&quot;
+</code></pre><pre><code>## Warning: Column `word` joining factors with different levels, coercing to
+## character vector
+</code></pre><pre><code>## # A tibble: 378 x 4
+##    word    times type       conn    
+##    &lt;chr&gt;   &lt;int&gt; &lt;fct&gt;      &lt;fct&gt;   
+##  1 precise     1 adjective  positive
+##  2 summer      1 noun       neutral 
+##  3 summer      1 propernoun neutral 
+##  4 all         2 noun       neutral 
+##  5 all         2 propernoun positive
+##  6 just        2 adjective  positive
+##  7 bris        1 noun       neutral 
+##  8 soon        1 &lt;NA&gt;       &lt;NA&gt;    
+##  9 foul        1 adjective  negative
+## 10 foul        1 propernoun negative
+## # … with 368 more rows
+</code></pre><p>After joining the song lyrics with the connotative lexicon, the number of observations actually increased - which actually surprised me. This is because the lexicon accounts for the classification of word (i.e. pronoun, verb, adjective). Part of me wants to do away with that system entirely, but each word can have different connotations for each classification. To neglect those different connotations just because I am lazy, wouldn't accurately represent the actual song. So, persist we must. To essentially side step this issue, I created a numeric column to correspond to each connotation: +1 for a positive connotation, -1 for negative, and 0 for a neutral connotation. By taking the average of these values for each word, I get a more comprehensive connotation score without over-representing words that have multiple classifications.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lexi3 <span style="color:#f92672">&lt;-</span> lexi2 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(value <span style="color:#f92672">=</span> <span style="color:#a6e22e">ifelse</span>(conn <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">positive&#34;</span>, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">ifelse</span>(conn <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">negative&#34;</span>, <span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">0</span>))) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>conn) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(word) <span style="color:#f92672">%&gt;%</span>  <span style="color:#a6e22e">summarise_at</span>(<span style="color:#a6e22e">vars</span>(<span style="color:#f92672">-</span>type), <span style="color:#a6e22e">funs</span>(<span style="color:#a6e22e">mean</span>(., na.rm<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>))) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate_if</span>(is.integer, as.double)
+</code></pre></div><pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## Please use a list of either functions or lambdas: 
+## 
+##   # Simple named list: 
+##   list(mean = mean, median = median)
+## 
+##   # Auto named with `tibble::lst()`: 
+##   tibble::lst(mean, median)
+## 
+##   # Using lambdas
+##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
+## This warning is displayed once per session.
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lexi3 
+</code></pre></div><pre><code>## # A tibble: 76,134 x 2
+##    word     value
+##    &lt;fct&gt;    &lt;dbl&gt;
+##  1 a            0
+##  2 a-ok         0
+##  3 a-okay       0
+##  4 a-one        1
+##  5 aa           0
+##  6 aaa          0
+##  7 aaah         1
+##  8 aaarated     1
+##  9 aac          1
+## 10 aachen       0
+## # … with 76,124 more rows
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">shalom <span style="color:#f92672">&lt;-</span> full <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">left_join</span>(lexi3)
+</code></pre></div><pre><code>## Joining, by = &quot;word&quot;
+</code></pre><pre><code>## Warning: Column `word` joining factors with different levels, coercing to
+## character vector
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">shalom
+</code></pre></div><pre><code>## # A tibble: 219 x 3
+##    word    times  value
+##    &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;
+##  1 precise     1  1    
+##  2 summer      1  0    
+##  3 all         2  0.5  
+##  4 just        2  1    
+##  5 bris        1  0    
+##  6 soon        1 NA    
+##  7 foul        1 -1    
+##  8 held        1 -1    
+##  9 touch       1  0.333
+## 10 statues     1 NA    
+## # … with 209 more rows
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">shalom1 <span style="color:#f92672">&lt;-</span> shalom <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(weighted_value <span style="color:#f92672">=</span> times<span style="color:#f92672">*</span>value) <span style="color:#f92672">%&gt;%</span> na.omit
+</code></pre></div><p>Main short coming of this lexicon: it doesn't have every word used in the song, particularly overlooking the plural form of each word. Perhaps I will go back and see if I get more comprehensive results if I coerce each word into its singular form, but I think that could get tricky. I could also add an &lsquo;s&rsquo; to every word in the lexicon &ndash; which might be less tricky.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">shalom1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(weighted_value) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">summarise_all</span>(sum)
+</code></pre></div><pre><code>## # A tibble: 1 x 1
+##   weighted_value
+##            &lt;dbl&gt;
+## 1             25
+</code></pre><p>Overall, this song is positive - thank god too like how was I going to tell my husband that this song - the first song that either of us ever added to one of our shared playlists - is actually a bummer ???? Thank you R</p>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <a href="/"><img src="/images/coffee.png" alt="Bailee Dastugue"></a>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Contact Me</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark" href="tel:Yikes"><i
+                class="ti-mobile mr-3 text-primary"></i>Yikes</a></li>
+          <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>Austin, Texas</li>
+          <li class="mb-3"><a class="text-dark" href="mailto:bailee.dast@gmail.com"><i
+                class="ti-email mr-3 text-primary"></i>bailee.dast@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Social Contacts</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="#">facebook</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">twitter</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">instagram</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="#">github</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href=""></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Categories</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/projects">Projects</a>
+          </li>
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/rstudio">Rstudio</a>
+          </li>
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/web-design">Web design</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="/about/about">About</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="/blog">Post</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="/contact">Contact</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-12 border-top py-4 text-center">
+        | @2019 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var indexURL = "/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="/plugins/jQuery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="/plugins/slick/slick.min.js"></script>
+
+<script src="/plugins/venobox/venobox.min.js"></script>
+
+<script src="/plugins/search/fuse.min.js"></script>
+
+<script src="/plugins/search/mark.js"></script>
+
+<script src="/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'Your ID', 'auto');
+  ga('send', 'pageview');
+</script></body>
+</html>
