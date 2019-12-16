@@ -58,6 +58,15 @@ Any ‘about me’ is typically hyper-focused on an all-too revealing medical hi
     </item>
     
     <item>
+      <title>Data Wranglin&#39;</title>
+      <link>/blog/post-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/post-1/</guid>
+      <description>In my computational biology class, our first project using RStudio focused on data wrangling and data exploration.</description>
+    </item>
+    
+    <item>
       <title>Devendra Banhart ft. Python and Reticulate</title>
       <link>/blog/post-3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -84,15 +93,6 @@ For some reason, there is an extreme over-representation of Dr.</description>
       <guid>/project2/</guid>
       <description>Introduction
 This dataset was found using kaggle and involves a variety of numeric (age, weight, systolic BP, diastolic BP), scaled (glucose level, cholesterol level, and gender), and binary variables (active, smoker, alcohol use, cardiac disease).</description>
-    </item>
-    
-    <item>
-      <title>This is Project 1</title>
-      <link>/blog/post-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/post-1/</guid>
-      <description>The code in its entirety can be found (via RMarkdown) here</description>
     </item>
     
   </channel>

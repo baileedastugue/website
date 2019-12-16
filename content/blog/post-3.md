@@ -10,5 +10,5 @@ tags:
 title: Devendra Banhart ft. Python and Reticulate
 type: "featured"
 ---
- 
+
 The code in its entirety can be found (via RMarkdown) [here](/Project3)

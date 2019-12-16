@@ -28,4 +28,4 @@ BS in Human Biology with a Pre-health Certificate for Science Majors from the Un
 
 ##### Resume
 
-My very very sad and old resume can be found [here](/Resume.pdf) because I cannot seem to find my shiny new one
+My resume can be found [here](/Resume1.pdf)

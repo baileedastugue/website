@@ -53,6 +53,10 @@
   </url>
   
   <url>
+    <loc>/blog/post-1/</loc>
+  </url>
+  
+  <url>
     <loc>/blog/post-3/</loc>
   </url>
   
@@ -78,10 +82,6 @@
   
   <url>
     <loc>/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>/blog/post-1/</loc>
   </url>
   
 </urlset>
