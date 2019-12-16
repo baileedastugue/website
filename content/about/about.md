@@ -17,8 +17,7 @@ I am fortunate enough to be surrounded by love (re: husband, Jack, and feline of
 
 ##### Business to Biology
 
-As of fall 2019, I’m at a total of 6 surgeries. These procedures are heavily intertwined with Why I’m Here: why I began a pursuit of an MD with one semester left in a business degree and why I eventually left said pursuit in the middle of interviewing at medical schools. My current trajectory is hurdling towards graduating (again!) in the Spring of 2020 with a B.S. in Human Biology with a doctorate in exercise physiology to eventually follow. My desire is to embue a love of learning in future health professionals (because honestly our lives depend on it) while studying how the most readily available source of biochemicals (exercise!) impacts our health.
-
+As of fall 2019, I’m at a total of 6 surgeries with a handful more to come. These procedures are heavily intertwined with Why I’m Here: why I began a pursuit of an MD with one semester left in a business degree and why I eventually left said pursuit in the middle of interviewing at medical schools. My current trajectory is hurdling towards graduating (again!) in the Spring of 2020 with a B.S. in Human Biology with a very large question mark after that. My desire is to embue a love of learning in students at the higher-education level - we will see what this broken bod let's me do beyond more surgery.
 
 ##### Education
 
