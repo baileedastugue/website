@@ -6,7 +6,6 @@
     <description>Recent content in Categories on Bailee Dastugue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Oct 2019 10:07:47 +0600</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,27 +13,9 @@
     <item>
       <title>RStudio</title>
       <link>/categories/rstudio/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/categories/rstudio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Design</title>
-      <link>/categories/web-design/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>/categories/web-design/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>/categories/projects/</link>
-      <pubDate>Thu, 17 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>/categories/projects/</guid>
       <description></description>
     </item>
     

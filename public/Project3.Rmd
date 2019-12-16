@@ -1,0 +1,88 @@
+---
+Author: Bailee Dastugue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{R}
+library(readr)
+lexi <- read_csv("~/desktop/website/content/blog/lexi.csv")
+library(reticulate)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+lexi
+lexi1 <- lexi %>% rename(word = Word) %>% rename(conn = connotation) %>% glimpse()
+lexi2 <- lexi1 %>% separate(word, into = c("word", "type"), sep = "_") %>% mutate_if(is.character, as.factor) %>% glimpse()
+```
+
+```{r}
+shabop <- paste(read_lines("shabop.txt"), collapse = " ")
+shabop
+```
+
+```{python}
+import re
+shabop2 = re.sub(r"[.—,;'\")()?-]","",r.shabop)
+print(shabop2)
+```
+
+```{python}
+shabop3 = re.split(r" +", shabop2)
+lower_list=[] #empty list
+for word in shabop3:
+  temp = word.lower()
+  lower_list.append(temp)
+print(lower_list)
+```
+
+```{python}
+counts = {}
+for c in lower_list:
+    if c in counts:
+        counts[c]+=1
+    else:
+        counts[c]=1
+for c in counts:
+   print (c, 'appears', counts[c],"times")
+```
+
+
+```{python}
+list = []
+for c in counts:
+   new = (c, counts[c])
+   list.append(new)
+```
+
+
+```{r}
+times <- py$list %>% as.data.frame() %>% select_if(is.integer) %>% pivot_longer(contains(c("X")), names_to = "name", values_to = "times") %>% mutate(id = row_number()) %>% select(-name)
+times
+words <- py$list %>% as.data.frame() %>% select_if(is.factor) %>% pivot_longer(contains(c("X")), names_to = "name", values_to = "word") %>% mutate(id = row_number()) %>% select(-name)
+words
+full <- words %>% left_join(times) %>% select(-id)
+```
+
+```{r}
+full %>% left_join(lexi2)
+```
+After joining the song lyrics with the connotative lexicon, the number of observations actually increased - which actually surprised me. This is because the lexicon accounts for the classification of word (i.e. pronoun, verb, adjective). Part of me wants to do away with that system entirely, but each word can have different connotations for each classification. To neglect those different connotations just because I am lazy, wouldn't accurately represent the actual song. So, persist we must. To essentially side step this issue, I created a numeric column to correspond to each connotation: +1 for a positive connotation, -1 for negative, and 0 for a neutral connotation. By taking the average of these values for each word, I get a more comprehensive connotation score without over-representing words that have multiple classifications.
+
+```{r}
+lexi3 <- lexi2 %>% mutate(value = ifelse(conn == "positive", 1, ifelse(conn == "negative", -1, 0))) %>% select(-conn) %>% group_by(word) %>%  summarise_at(vars(-type), funs(mean(., na.rm=TRUE))) %>% mutate_if(is.integer, as.double)
+lexi3 
+shalom <- full %>% left_join(lexi3)
+shalom
+shalom1 <- shalom %>% mutate(weighted_value = times*value) %>% na.omit
+```
+Main short coming of this lexicon: it doesn't have every word used in the song, particularly overlooking the plural form of each word. Perhaps I will go back and see if I get more comprehensive results if I coerce each word into its singular form, but I think that could get tricky. I could also add an 's' to every word in the lexicon -- which might be less tricky.
+
+```{r}
+shalom1 %>% select(weighted_value) %>% summarise_all(sum)
+```
+
+Overall, this song is positive - thank god too like how was I going to tell my husband that this song - the first song that either of us ever added to one of our shared playlists - is actually a bummer ???? Thank you R
+
