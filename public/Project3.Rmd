@@ -21,13 +21,16 @@ However! We tend to disagree on the *tone* of a song frequently. For example, I 
 I focus much more extensively on lyrics while he is more attuned to the actual music (chords, key, etc). True to form, this project is an attempt to quantify how positive or negative the lyrics of a song are. With a score of 25, "Shabop" seems positive, but it's a relative scoring system entirely dependent on the odd lexicon found online. Would be good to have other songs to measure against - note to self: find the happiest and most depressive songs to score at a later date.
 
 
-```{R}
+```{R, include = F, echo = F}
 library(readr)
 lexi <- read_csv("~/desktop/website/content/blog/lexi.csv")
 library(reticulate)
 library(dplyr)
 library(tidyr)
 library(tidyverse)
+```
+
+```{R}
 lexi1 <- lexi %>% rename(word = Word) %>% rename(conn = connotation) %>% glimpse()
 lexi2 <- lexi1 %>% separate(word, into = c("word", "type"), sep = "_") %>% mutate_if(is.character, as.factor) %>% glimpse()
 shabop <- paste(read_lines("shabop.txt"), collapse = " ")
