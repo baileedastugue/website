@@ -19,10 +19,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 opts_chunk$set(fig.align="center", fig.height=5, message=FALSE, warning=FALSE, fig.width=8, tidy=TRUE)
 ```
-#### About the Data Sets
+__About the Data Sets__
 Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.
 
-#### Editing the Data Sets
+__Editing the Data Sets__
 ```{r warning= FALSE}
 library(ggplot2)
 library(tidyr)
@@ -100,7 +100,7 @@ FinalData <- full_clean4 %>% left_join(st.reg, by="State") %>% mutate_if(is.fact
 ```
 Each state was assigned a region based on its location in the US and that regional label was recorded in a new column using mutate_if(). First a dataframe of the regions was created and then it was joined to the diabetes and COD dataset using a left_join(). The left join was used to retain all the data in the complete data set but essentially tack on the regions at the end.
 
-#### Summary Statistics 
+__Summary Statistics__
 ```{r warning= FALSE}
 FinalData %>% group_by(Region) %>% summarize_all(function(x)sum(is.na(x)))
 ```
@@ -165,7 +165,7 @@ FinalData %>% group_by(Region) %>% summarize(mean_ExcessHD=mean(PercentExcess_HD
 
 10. This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.
 
-###Graphs
+__Graphs__
 ```{r warning=FALSE}
 ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat="summary",fun.y="mean", position="dodge")+
@@ -221,7 +221,7 @@ scale_color_gradient(low="yellow", high="red")+
 
 The first graph displays a positive relationship between excess deaths due to heart disease, cancer, and stroke (color get increasingly redder as each axis increases). This can indicate that states experiencing higher mortality rates from one disease are likely to experience higher mortality rates in other diseases - that one disease is not primarily contributing to the excess death rates. The same graph was reproduced with the color representing the death levels. The states with HIGH excess death levels have high levels of both heart disease and cancer -- one is not a primary contributor to excess death levels. When stroke is represented on the y-axis, the results remain fairly consistent.
 
-#### PCA
+__PCA__
 
 ```{r warning= FALSE}
 nums<-selectedVar%>%select_if(is.numeric)%>% round(2)%>%scale

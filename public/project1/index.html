@@ -144,12 +144,9 @@
           
 
 
-<div id="about-the-data-sets" class="section level4">
-<h4>About the Data Sets</h4>
-<p>Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.</p>
-</div>
-<div id="editing-the-data-sets" class="section level4">
-<h4>Editing the Data Sets</h4>
+<p><strong>About the Data Sets</strong>
+Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Ultimately, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set.</p>
+<p><strong>Editing the Data Sets</strong></p>
 <pre class="r"><code>library(ggplot2)
 library(tidyr)
 library(tidyverse)
@@ -307,9 +304,7 @@ FinalData &lt;- full_clean4 %&gt;% left_join(st.reg, by=&quot;State&quot;) %&gt;
 ## $ ExcessDeathLVL      &lt;chr&gt; &quot;LOW&quot;, &quot;LOW&quot;, &quot;LOW&quot;, &quot;LOW&quot;, &quot;LOW&quot;, &quot;LOW&quot;, &quot;L…
 ## $ Region              &lt;chr&gt; &quot;Northeast&quot;, &quot;South&quot;, &quot;North Central&quot;, &quot;Nort…</code></pre>
 <p>Each state was assigned a region based on its location in the US and that regional label was recorded in a new column using mutate_if(). First a dataframe of the regions was created and then it was joined to the diabetes and COD dataset using a left_join(). The left join was used to retain all the data in the complete data set but essentially tack on the regions at the end.</p>
-</div>
-<div id="summary-statistics" class="section level4">
-<h4>Summary Statistics</h4>
+<p><strong>Summary Statistics</strong></p>
 <pre class="r"><code>FinalData %&gt;% group_by(Region) %&gt;% summarize_all(function(x)sum(is.na(x)))</code></pre>
 <pre><code>## # A tibble: 4 x 27
 ##   Region State DiabetesDiagnos… DD_SMC DD_HighBP DD_Depressive DD_HighChol
@@ -483,7 +478,7 @@ selectedVar%&gt;%cor</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>This shows the mean and standard deviation for the percent excess deaths due to heart disease for each of the regions in the united states. The south had the highest average while the west had the greatest standard deviation.</li>
 </ol>
-<p>###Graphs</p>
+<p><strong>Graphs</strong></p>
 <pre class="r"><code>ggplot(FinalData, aes(x = Region, y = DiabetesDiagnosed, fill=ExcessDeathLVL))+
   geom_bar(stat=&quot;summary&quot;,fun.y=&quot;mean&quot;, position=&quot;dodge&quot;)+
   geom_errorbar(stat=&quot;summary&quot;,position=&quot;dodge&quot;) + xlab(&quot;Region of the U.S.&quot;) +
@@ -526,9 +521,7 @@ scale_color_gradient(low=&quot;yellow&quot;, high=&quot;red&quot;)+
   ggtitle(&quot;Excess Heart Disease Deaths vs. Excess Stroke Deaths&quot;)</code></pre>
 <p><img src="/Project1_files/figure-html/unnamed-chunk-23-3.png" width="768" style="display: block; margin: auto;" /></p>
 <p>The first graph displays a positive relationship between excess deaths due to heart disease, cancer, and stroke (color get increasingly redder as each axis increases). This can indicate that states experiencing higher mortality rates from one disease are likely to experience higher mortality rates in other diseases - that one disease is not primarily contributing to the excess death rates. The same graph was reproduced with the color representing the death levels. The states with HIGH excess death levels have high levels of both heart disease and cancer – one is not a primary contributor to excess death levels. When stroke is represented on the y-axis, the results remain fairly consistent.</p>
-</div>
-<div id="pca" class="section level4">
-<h4>PCA</h4>
+<p><strong>PCA</strong></p>
 <pre class="r"><code>nums&lt;-selectedVar%&gt;%select_if(is.numeric)%&gt;% round(2)%&gt;%scale
 rownames(nums)&lt;-selectedVar$State
 DD_pca&lt;-princomp(na.omit(nums), cor = TRUE)
@@ -575,7 +568,6 @@ ggplot()+geom_bar(aes(y=varprop,x=1:7),stat=&quot;identity&quot;)+xlab(&quot;&qu
 <pre class="r"><code>ggplot()+geom_point(aes(DD_pca$scores[,1], DD_pca$scores[,2]))+xlab(&quot;PC1&quot;)+ylab(&quot;PC2&quot;)</code></pre>
 <p><img src="/Project1_files/figure-html/unnamed-chunk-28-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>A beautiful plot of PC1 against PC2. Together, these two new variables account for ~50% of the variation in the data set.</p>
-</div>
 
         </div>
 
