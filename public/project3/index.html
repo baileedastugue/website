@@ -139,8 +139,9 @@
 
 
 <p><strong>Goals of this project:</strong></p>
-<p>From a computational biology approach, I wanted to integrate Python functionality within R while satisfying the “please use Python in some capacity” requirement for this project. I used Python to count the number of times a word in the song “Shabop Shalom” was said. I used a connotative lexicon for over 90k words found online (and will eventually be linked <em>here</em>) and tidied that data set using R. I joined the two using R and ran some summary statistics. Will soon add some charts that potentially only I will enjoy.</p>
-<p>From a more personal perspective, my husband and I share a lot of music on a many collaborative playlists. We started doing this as friends many moons ago and it’s been a really wonderful way to document our relationship over the years.</p>
+<p><em>From a computational biology approach,</em> I wanted to integrate Python functionality within R while satisfying the “please use Python in some capacity” requirement for this project. I used Python to count the number of times a word in the song “Shabop Shalom” was said. I used a connotative lexicon for over 90k words found online (and will eventually be linked <em>here</em>) and tidied that data set using R. I joined the two using R and ran some summary statistics. Will soon add some charts that potentially only I will enjoy.
+<br></p>
+<p><em>From a more personal perspective,</em> my husband and I share a lot of music on a many collaborative playlists. We started doing this as friends many moons ago and it’s been a really wonderful way to document our relationship over the years.</p>
 <p>However! We tend to disagree on the <em>tone</em> of a song frequently. For example, I find Japanese Breakfast’s <a href="https://open.spotify.com/track/7xKjdvYaJ1tvwNXRTAZs78?si=rSNHKuD_TTqDYeQ8SoQSow">“Maybe You’re the Reason”</a> to be a song about finding meaning in love and/or passsion whilst in a strong bout of apathy and existentialism (Aside, is there a way to run a spell check on an R file? I am in desperate need). As I got a major hip surgery this summer, this song felt Significant and Meaningful as I navigated a lot of the more frustrating aspects of recovery. I added it as a sweet subtweet! So sweet! He thought the vibe was less positive.</p>
 <p>I focus much more extensively on lyrics while he is more attuned to the actual music (chords, key, etc). True to form, this project is an attempt to quantify how positive or negative the lyrics of a song are. With a score of 25, “Shabop” seems positive, but it’s a relative scoring system entirely dependent on the odd lexicon found online. Would be good to have other songs to measure against - note to self: find the happiest and most depressive songs to score at a later date.</p>
 <pre class="r"><code>library(readr)
@@ -162,11 +163,11 @@ library(dplyr)</code></pre>
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>library(tidyr)
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.2.1     ✔ stringr 1.4.0
 ## ✔ tibble  2.1.3     ✔ forcats 0.4.0
 ## ✔ purrr   0.3.3</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>lexi</code></pre>
