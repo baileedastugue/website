@@ -12,15 +12,6 @@
     
     
     <item>
-      <title></title>
-      <link>/blog/project3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/project3/</guid>
-      <description>library(readr) lexi &amp;lt;- read_csv(&amp;quot;~/desktop/website/content/blog/lexi.csv&amp;quot;) ## Parsed with column specification: ## cols( ## Word = col_character(), ## connotation = col_character() ## ) library(reticulate) library(dplyr) ## ## Attaching package: &amp;#39;dplyr&amp;#39; ## The following objects are masked from &amp;#39;package:stats&amp;#39;: ## ## filter, lag ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## intersect, setdiff, setequal, union library(tidyr) library(tidyverse) ## ── Attaching packages ───────────────────────────────────────── tidyverse 1.</description>
-    </item>
-    
-    <item>
       <title>Devendra Banhart ft. Python and Reticulate</title>
       <link>/blog/post-3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
