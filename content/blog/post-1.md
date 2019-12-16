@@ -15,7 +15,7 @@ In my computational biology class, our first project using RStudio focused on da
 
 ![image](/images/caveman.png)
 
-The code in its entirety can be found [here](/Project1)
+__The code in its entirety can be found [here](/Project1)__
 
 Both data sets were found on the Center for Disease Control website for the 2015 year. The Cause of Death (COD) data set has information on the five leading causes of death for each state in the U.S.. Interesting variables include projected number of deaths for each state due to a specific cause of death and whether that state exceeding that projection, quantified using a percentage. The diabetes data set information was a subset of data from chronic disease indicators. My interest in healthcare and nutrition prompted me to choose these data sets. I ultimately wanted to determine whether there was a relationship between states that had poor nutrition (high incidence of diabetes) and higher than expected rates of mortality. Overall, there was low correlation between selected variables. This could be due to high prevalance of NAs in the diabetes data set. In the future, I'd like to investigate how the prevalence of NAs for a particular state corresponds to that state's health outcomes - how a lack of complete data could be indicative of real ______. 
 
