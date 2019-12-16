@@ -1,21 +1,12 @@
 ---
-categories:
-- Web Design
-date: "2019-10-29T10:07:47+06:00"
-description: this is meta description
-draft: false
-image: 
-tags:
-- RStudio
-title: Another Post
-type: "post"
+Author: Bailee Dastugue
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{R}
 library(readr)
 lexi <- read_csv("~/desktop/website/content/blog/lexi.csv")
 library(reticulate)
