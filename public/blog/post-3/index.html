@@ -142,7 +142,34 @@
         <div class="content mb-5">
           <p><strong>The code in its entirety can be found (via RMarkdown) <a href="/Project3">here</a></strong></p>
 <p>I highly recommend listening to the song <a href="https://open.spotify.com/track/5GiygyFRSZ2jey4almSmrL?si=me44b-c-Syu-_I8yRy6EjQ">here</a> while you read the nonsense above.</p>
-
+<p><em>pls exclude the following code I am playing around with output atm</em></p>
+<pre><code class="language-{R," data-lang="{R,">library(readr)
+lexi &lt;- read_csv(&quot;~/desktop/website/content/blog/lexi.csv&quot;)
+library(reticulate)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+lexi1 &lt;- lexi %&gt;% rename(word = Word) %&gt;% rename(conn = connotation) %&gt;% glimpse()
+lexi2 &lt;- lexi1 %&gt;% separate(word, into = c(&quot;word&quot;, &quot;type&quot;), sep = &quot;_&quot;) %&gt;% mutate_if(is.character, as.factor) %&gt;% glimpse()
+shabop &lt;- paste(read_lines(&quot;shabop.txt&quot;), collapse = &quot; &quot;)
+</code></pre><pre><code class="language-{python," data-lang="{python,">import re
+shabop2 = re.sub(r&quot;[.—,;'\&quot;)()?-]&quot;,&quot;&quot;,r.shabop)
+shabop3 = re.split(r&quot; +&quot;, shabop2)
+lower_list=[] #empty list
+for word in shabop3:
+  temp = word.lower()
+  lower_list.append(temp)
+counts = {}
+for c in lower_list:
+    if c in counts:
+        counts[c]+=1
+    else:
+        counts[c]=1
+list = []
+for c in counts:
+   new = (c, counts[c])
+   list.append(new)
+</code></pre>
         </div>
 
         
