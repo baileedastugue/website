@@ -54,10 +54,10 @@ disqusShortname = ""
   URL = "blog"
   weight = 3
 
-  [[menu.main]]
-  name = "Contact"
-  URL = "contact"
-  weight = 4
+ # [[menu.main]]
+#  name = "Contact"
+ # URL = "contact"
+#  weight = 4
 
   # footer menu
   [[menu.footer]]
@@ -70,10 +70,10 @@ disqusShortname = ""
   URL = "blog"
   weight = 3
 
-  [[menu.footer]]
-  name = "Contact"
-  URL = "contact"
-  weight = 4
+#  [[menu.footer]]
+ # name = "Contact"
+#  URL = "contact"
+ # weight = 4
 
 
 #################### default parameters ################################
@@ -84,10 +84,10 @@ home = "Home"
 description = "This is meta description"
 author = "Bailee Dastugue"
 # google map
-gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"
-mapLatitude = "51.5223477"
-mapLongitude = "-0.1622023"
-mapMarker = "images/marker.png"
+#gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"
+#mapLatitude = "51.5223477"
+#mapLongitude = "-0.1622023"
+#mapMarker = "images/marker.png"
 # Google Analitycs
 googleAnalitycsID = "Your ID"
 # Contact Information
@@ -109,27 +109,27 @@ copyright = "| @2019 [Themefisher](https://themefisher.com) All Rights Reserved 
 
 
 ############################# social site ########################
-[[params.social]]
-title = "facebook"
-icon = "ti-facebook" # themify icon : https://themify.me/themify-icons
-link = "#"
+#[[params.social]]
+#title = "facebook"
+#icon = "ti-facebook" # themify icon : https://themify.me/themify-icons
+#link = "#"
 
-[[params.social]]
-title = "twitter"
-icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
-link = "#"
+#[[params.social]]
+#title = "twitter"
+#icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
+#link = "#"
 
 [[params.social]]
 title = "instagram"
 icon = "ti-instagram" # themify icon : https://themify.me/themify-icons
-link = "#"
+link = "https://www.instagram.com/bunnydastugue/"
 
 [[params.social]]
 title = "github"
 icon = "ti-github" # themify icon : https://themify.me/themify-icons
-link = "#"
+link = "https://github.com/baileedastugue"
 
-[[params.social]]
+#[[params.social]]
 #title = "linkedin"
 #icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
 #link = "#"

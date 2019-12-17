@@ -3,7 +3,7 @@ title: "About Me"
 draft: false
 image: "images/author1.png"
 description: "this is meta description"
-type : "about"
+type : about
 ---
 
 My name is Bailee Dastugue (formerly Wallis). 
@@ -27,4 +27,4 @@ BS in Human Biology with a Pre-health Certificate for Science Majors from the Un
 
 ##### Resume
 
-My resume can be found [here](/Resume1.pdf)
+My resume can be found [here](/Resume2.pdf)
