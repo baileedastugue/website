@@ -8,7 +8,7 @@ type : "about"
 
 My name is Bailee Dastugue (formerly Wallis). 
 
-Any ‘about me’ is typically hyper-focused on an all-too revealing medical history. Whether it is because that is what my life has actually consisted of or because it’s what I, personally, find most interesting is beyond me. My bias towards biology pervades my biography. Above all, I’m interested in the human body – why it functions, why it fails, and how we can systemically improve our human condition through science.
+Any ‘about me’ is typically hyper-focused on an all-too revealing medical history. Whether it is because that is what my life has actually consisted of or because it’s what I, personally, find most interesting is beyond me. My bias towards biology pervades my biography. Above all, I’m interested in the human body and mind – why it functions, why it fails, and how we can systemically improve our human condition through science, statistics, and rational thought.
 
 ![image](/images/about-3.jpg)
 ![image](/images/about-2.jpg)
