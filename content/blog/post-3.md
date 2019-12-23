@@ -16,7 +16,9 @@ __The code in its entirety can be found (via RMarkdown) [here](/Project3)__
 I highly recommend listening to the song [here](https://open.spotify.com/track/5GiygyFRSZ2jey4almSmrL?si=me44b-c-Syu-_I8yRy6EjQ) while you read the nonsense above.
 
 *pls exclude the following code I am playing around with output atm*
-```{R, include = FALSE}
+
+
+```{include = FALSE}
 library(readr)
 lexi <- read_csv("~/desktop/website/content/blog/lexi.csv")
 library(reticulate)

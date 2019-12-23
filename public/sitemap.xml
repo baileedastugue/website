@@ -61,11 +61,19 @@
   </url>
   
   <url>
+    <loc>/blog/post-4/</loc>
+  </url>
+  
+  <url>
     <loc>/blog/post-2/</loc>
   </url>
   
   <url>
     <loc>/tags/new/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/personal/</loc>
   </url>
   
   <url>

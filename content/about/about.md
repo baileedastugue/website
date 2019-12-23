@@ -3,7 +3,7 @@ title: "About Me"
 draft: false
 image: "images/author1.png"
 description: "this is meta description"
-type : about
+type : "about"
 ---
 
 My name is Bailee Dastugue (formerly Wallis). 
