@@ -2,8 +2,8 @@
 categories:
 - Personal
 description: this is meta description
-draft: true
-image: 
+draft: false
+image: images/post/post-4.jpg
 tags:
 title: Externalization pt. 1 
 type: "post"
